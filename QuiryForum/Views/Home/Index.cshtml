@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="row">
+    <div class="col-8" id="main-content" style="border:dashed black .2em;">
+        <div class="row" style="height:800px">
+            <p class="temp-text">This is where the questions will be (sorted by most recent)</p>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="row" id="question-box" style="border:dashed green .2em; height:350px">
+            <p>Box that prompts user to ask a question</p>
+        </div>
+
+        <div class="row" id="category-container" style="border:dashed purple .2em; height:500px">
+            <p>List of categories for users to browse questions</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    p {
+        margin: auto;
+    }
+</style>

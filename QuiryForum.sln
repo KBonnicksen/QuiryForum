@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuiryForum", "QuiryForum\QuiryForum.csproj", "{91F522F8-AA80-467C-AB36-8DBA9C587242}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91F522F8-AA80-467C-AB36-8DBA9C587242}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F522F8-AA80-467C-AB36-8DBA9C587242}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F522F8-AA80-467C-AB36-8DBA9C587242}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F522F8-AA80-467C-AB36-8DBA9C587242}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0700CF29-AF76-405E-80A7-07ABF0286798}
+	EndGlobalSection
+EndGlobal
