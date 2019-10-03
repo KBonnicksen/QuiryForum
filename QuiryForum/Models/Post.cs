@@ -17,6 +17,7 @@ namespace QuiryForum.Models
         public Post()
         {
             // Set the Account to the account logged in
+            postingDate = DateTime.Now;
         }
 
         /// <summary>
