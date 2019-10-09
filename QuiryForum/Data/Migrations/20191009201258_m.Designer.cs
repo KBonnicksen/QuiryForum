@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuiryForum.Data;
 
 namespace QuiryForum.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191009201258_m")]
+    partial class m
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -223,9 +225,13 @@ namespace QuiryForum.Data.Migrations
 
                     b.Property<int?>("FollowerID");
 
+                    b.Property<int?>("UserAccountID");
+
                     b.HasKey("UserID", "FollowerID");
 
                     b.HasIndex("FollowerID");
+
+                    b.HasIndex("UserAccountID");
 
                     b.ToTable("AccountFollowers");
                 });
@@ -316,8 +322,7 @@ namespace QuiryForum.Data.Migrations
 
                     b.HasOne("QuiryForum.Models.Account", "User")
                         .WithMany("Followers")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserAccountID");
                 });
 
             modelBuilder.Entity("QuiryForum.Models.Post", b =>

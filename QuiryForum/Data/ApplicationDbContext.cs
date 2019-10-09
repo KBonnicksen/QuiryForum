@@ -34,9 +34,8 @@ namespace QuiryForum.Data
 
             modelBuilder.Entity<AccountFollowers>()
                 .HasOne(p => p.User)
-                .WithMany(m => m.Followers);
-
-            //.HasForeignKey(p => p.UserID);
+                .WithMany(m => m.Followers)
+                .HasForeignKey(p => p.UserID);
 
 
             modelBuilder.Entity<AccountFollowers>()
