@@ -20,10 +20,13 @@ namespace QuiryForum.Models
             postingDate = DateTime.Now;
         }
 
+        [Key]
+        public int PostID { get; set; }
+
         /// <summary>
         /// The account that created the post.
         /// </summary>
-        public Account Account { get; set; }
+        public ApplicationUser Account { get; set; }
 
         /// <summary>
         /// Represents the date the post was created.
