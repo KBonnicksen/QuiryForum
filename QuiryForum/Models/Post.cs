@@ -26,7 +26,7 @@ namespace QuiryForum.Models
         /// <summary>
         /// The account that created the post.
         /// </summary>
-        public Account Account { get; set; }
+        public ApplicationUser Account { get; set; }
 
         /// <summary>
         /// Represents the date the post was created.

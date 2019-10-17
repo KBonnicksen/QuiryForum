@@ -10,12 +10,12 @@ namespace QuiryForum.Models
     public class AccountFollowers
     {
         //[ForeignKey("UserID")]
-        public Account User { get; set; }
-        public int? UserID { get; set; }
+        public ApplicationUser User { get; set; }
+        public string UserID { get; set; }
 
 
         //[ForeignKey("FollowerID")]
-        public Account Follower { get; set; }
-        public int? FollowerID { get; set; }
+        public ApplicationUser Follower { get; set; }
+        public string FollowerID { get; set; }
     }
 }

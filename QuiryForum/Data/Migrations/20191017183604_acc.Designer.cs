@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuiryForum.Data;
 
 namespace QuiryForum.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191017183604_acc")]
+    partial class acc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,13 +137,19 @@ namespace QuiryForum.Data.Migrations
 
             modelBuilder.Entity("QuiryForum.Models.AccountFollowers", b =>
                 {
-                    b.Property<string>("UserID");
+                    b.Property<int?>("UserID");
 
-                    b.Property<string>("FollowerID");
+                    b.Property<int?>("FollowerID");
+
+                    b.Property<string>("FollowerId");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("UserID", "FollowerID");
 
-                    b.HasIndex("FollowerID");
+                    b.HasIndex("FollowerId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("AccountFollowers");
                 });
@@ -290,13 +298,11 @@ namespace QuiryForum.Data.Migrations
                 {
                     b.HasOne("QuiryForum.Models.ApplicationUser", "Follower")
                         .WithMany("Following")
-                        .HasForeignKey("FollowerID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("FollowerId");
 
                     b.HasOne("QuiryForum.Models.ApplicationUser", "User")
                         .WithMany("Followers")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("QuiryForum.Models.Post", b =>

@@ -18,13 +18,13 @@ namespace QuiryForum.Data.Migrations
                 name: "UserAccountID",
                 table: "AccountFollowers");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_AccountFollowers_Accounts_UserID",
-                table: "AccountFollowers",
-                column: "UserID",
-                principalTable: "Accounts",
-                principalColumn: "AccountID",
-                onDelete: ReferentialAction.Cascade);
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_AccountFollowers_Accounts_UserID",
+            //    table: "AccountFollowers",
+            //    column: "UserID",
+            //    principalTable: "Accounts",
+            //    principalColumn: "AccountID",
+            //    onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

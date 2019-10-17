@@ -8,14 +8,14 @@ using QuiryForum.Models;
 
 namespace QuiryForum.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Account> Accounts { get; set; }
+        public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
         //public DbSet<AccountFollowers> Followers { get; set; }
         public DbSet<Post> Posts { get; set; }
@@ -40,9 +40,8 @@ namespace QuiryForum.Data
 
             modelBuilder.Entity<AccountFollowers>()
                 .HasOne(p => p.Follower)
-                .WithMany(m => m.Following);
-                //.HasForeignKey(p => p.FollowerID)
-
+                .WithMany(m => m.Following)
+                .HasForeignKey(p => p.FollowerID);
         }
     }
 }
