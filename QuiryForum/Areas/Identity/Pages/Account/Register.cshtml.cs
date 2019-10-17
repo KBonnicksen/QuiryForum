@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using QuiryForum.Models;
 
 namespace QuiryForum.Areas.Identity.Pages.Account
 {
@@ -40,9 +41,24 @@ namespace QuiryForum.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
-            [Display(Name = "Email")]
+            public string UserName { get; set; }
+
+            [Required]
+            [DataType(DataType.EmailAddress)]
             public string Email { get; set; }
+
+            [Required]
+            public string FirstName { get; set; }
+
+            public string LastName { get; set; }
+
+            [Required]
+            [PersonalData]
+            public DateTime DateOfBirth { get; set; }
+
+            public string Description { get; set; }
+
+            public bool IsPrivate { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -66,7 +82,17 @@ namespace QuiryForum.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { 
+                    UserName = Input.UserName,
+                    IsPrivate = Input.IsPrivate,
+                    Description = Input.Description,
+                    DateOfBirth = Input.DateOfBirth,
+                    LastName = Input.LastName,
+                    FirstName = Input.FirstName,
+                    Email = Input.Email,
+                    PhoneNumber = Input.Email
+                };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using QuiryForum.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using QuiryForum.Models;
 
 namespace QuiryForum
 {
@@ -38,7 +39,7 @@ namespace QuiryForum
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => 
+            services.AddDefaultIdentity<ApplicationUser>(options => 
             {
                 // Set password options
                 options.Password.RequiredLength = 8;

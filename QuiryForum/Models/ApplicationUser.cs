@@ -9,6 +9,8 @@ namespace QuiryForum.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        [Required]
+        public override string UserName { get; set; }
         /// <summary>
         /// The unique email associated with this account
         /// </summary>
