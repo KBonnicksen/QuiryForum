@@ -3,21 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuiryForum.Data;
 
-namespace QuiryForum.Data.Migrations
+namespace QuiryForum.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191009201258_m")]
-    partial class m
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -63,57 +61,6 @@ namespace QuiryForum.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccessFailedCount");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken();
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed");
-
-                    b.Property<bool>("LockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("PhoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("TwoFactorEnabled");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -186,54 +133,80 @@ namespace QuiryForum.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("QuiryForum.Models.Account", b =>
+            modelBuilder.Entity("QuiryForum.Models.AccountFollowers", b =>
                 {
-                    b.Property<int>("AccountID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("UserID");
+
+                    b.Property<string>("FollowerID");
+
+                    b.HasKey("UserID", "FollowerID");
+
+                    b.HasIndex("FollowerID");
+
+                    b.ToTable("AccountFollowers");
+                });
+
+            modelBuilder.Entity("QuiryForum.Models.ApplicationUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken();
 
                     b.Property<DateTime>("DateOfBirth");
 
                     b.Property<string>("Description");
 
                     b.Property<string>("Email")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(256);
+
+                    b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FirstName")
                         .IsRequired();
 
                     b.Property<bool>("IsPrivate");
 
-                    b.Property<bool>("IsVerified");
-
                     b.Property<string>("LastName");
 
-                    b.Property<string>("Password")
-                        .IsRequired();
+                    b.Property<bool>("LockoutEnabled");
 
-                    b.Property<string>("Username")
-                        .IsRequired();
+                    b.Property<DateTimeOffset?>("LockoutEnd");
 
-                    b.HasKey("AccountID");
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256);
 
-                    b.ToTable("Accounts");
-                });
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256);
 
-            modelBuilder.Entity("QuiryForum.Models.AccountFollowers", b =>
-                {
-                    b.Property<int?>("UserID");
+                    b.Property<string>("PasswordHash");
 
-                    b.Property<int?>("FollowerID");
+                    b.Property<string>("PhoneNumber");
 
-                    b.Property<int?>("UserAccountID");
+                    b.Property<bool>("PhoneNumberConfirmed");
 
-                    b.HasKey("UserID", "FollowerID");
+                    b.Property<string>("SecurityStamp");
 
-                    b.HasIndex("FollowerID");
+                    b.Property<bool>("TwoFactorEnabled");
 
-                    b.HasIndex("UserAccountID");
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256);
 
-                    b.ToTable("AccountFollowers");
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("QuiryForum.Models.Category", b =>
@@ -257,13 +230,13 @@ namespace QuiryForum.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AccountID");
+                    b.Property<string>("AccountId");
 
                     b.Property<string>("Content");
 
                     b.HasKey("PostID");
 
-                    b.HasIndex("AccountID");
+                    b.HasIndex("AccountId");
 
                     b.ToTable("Posts");
                 });
@@ -278,7 +251,7 @@ namespace QuiryForum.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("QuiryForum.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -286,7 +259,7 @@ namespace QuiryForum.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("QuiryForum.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -299,7 +272,7 @@ namespace QuiryForum.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("QuiryForum.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -307,7 +280,7 @@ namespace QuiryForum.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
+                    b.HasOne("QuiryForum.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -315,21 +288,22 @@ namespace QuiryForum.Data.Migrations
 
             modelBuilder.Entity("QuiryForum.Models.AccountFollowers", b =>
                 {
-                    b.HasOne("QuiryForum.Models.Account", "Follower")
+                    b.HasOne("QuiryForum.Models.ApplicationUser", "Follower")
                         .WithMany("Following")
                         .HasForeignKey("FollowerID")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("QuiryForum.Models.Account", "User")
+                    b.HasOne("QuiryForum.Models.ApplicationUser", "User")
                         .WithMany("Followers")
-                        .HasForeignKey("UserAccountID");
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("QuiryForum.Models.Post", b =>
                 {
-                    b.HasOne("QuiryForum.Models.Account", "Account")
+                    b.HasOne("QuiryForum.Models.ApplicationUser", "Account")
                         .WithMany()
-                        .HasForeignKey("AccountID")
+                        .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
