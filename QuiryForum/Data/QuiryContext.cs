@@ -8,9 +8,9 @@ using QuiryForum.Models;
 
 namespace QuiryForum.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class QuiryContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public QuiryContext(DbContextOptions<QuiryContext> options)
             : base(options)
         {
         }
