@@ -50,9 +50,6 @@ namespace QuiryForum.Models
             Answers = new List<Answer>();
         }
 
-        [Key]
-        public int QuestionID { get; set; }
-
         [Required]
         [StringLength(300)]
         /// <summary>
@@ -81,9 +78,6 @@ namespace QuiryForum.Models
             Likes = 0;
             Dislikes = 0;
         }
-
-        [Key]
-        public int AnswerID { get; set; }
 
         /// <summary>
         /// The question that this answer is answering.
