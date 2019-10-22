@@ -9,7 +9,7 @@ using QuiryForum.Data;
 
 namespace QuiryForum.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(QuiryContext))]
     [Migration("20191017185709_initialize")]
     partial class initialize
     {

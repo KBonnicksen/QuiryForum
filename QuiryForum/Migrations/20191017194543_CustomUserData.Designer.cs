@@ -9,7 +9,7 @@ using QuiryForum.Data;
 
 namespace QuiryForum.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(QuiryContext))]
     [Migration("20191017194543_CustomUserData")]
     partial class CustomUserData
     {

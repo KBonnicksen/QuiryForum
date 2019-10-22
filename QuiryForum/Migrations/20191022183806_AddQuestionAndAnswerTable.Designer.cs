@@ -9,7 +9,7 @@ using QuiryForum.Data;
 
 namespace QuiryForum.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(QuiryContext))]
     [Migration("20191022183806_AddQuestionAndAnswerTable")]
     partial class AddQuestionAndAnswerTable
     {
