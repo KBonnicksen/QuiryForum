@@ -18,7 +18,9 @@ namespace QuiryForum.Data
       //  public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Category> Categories { get; set; }
         //public DbSet<AccountFollowers> Followers { get; set; }
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<Question> Questions { get; set; }
+
+        public DbSet<Answer> Answers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
