@@ -12,7 +12,7 @@ namespace QuiryForum.Controllers
     {
         public IActionResult Index()
         {
-            return View();oji
+            return View();
         }
 
         public IActionResult Privacy()
