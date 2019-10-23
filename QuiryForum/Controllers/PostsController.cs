@@ -28,17 +28,17 @@ namespace QuiryForum.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Ask(Post post)
+        public async Task<IActionResult> Ask(Question q)
         {
             if (ModelState.IsValid)
             {
-                await QuestionDB.AddAsync(post, context);
+                await QuestionDB.AddAsync(q, context);
                 
                 return RedirectToAction("Index");
             };
 
             // So that all of the errors that you encounter are sent with the view
-            return View(post);
+            return View(q);
         }
     }
 }
