@@ -19,7 +19,7 @@ namespace QuiryForum.Data
         /// <param name="q"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static async Task<Post> AddAsync(Question q, QuiryContext context)
+        public static async Task<Question> AddAsync(Question q, QuiryContext context)
         {
             await context.AddAsync(q);
             await context.SaveChangesAsync();
@@ -36,7 +36,7 @@ namespace QuiryForum.Data
             await context.SaveChangesAsync();
         }
 
-        public static async Task<Post> UpdateQuestion(Question question, QuiryContext context)
+        public static async Task<Question> EditQuestion(Question question, QuiryContext context)
         {
             context.Update(question);
             await context.SaveChangesAsync();
