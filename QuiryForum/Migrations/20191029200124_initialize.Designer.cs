@@ -10,8 +10,8 @@ using QuiryForum.Data;
 namespace QuiryForum.Migrations
 {
     [DbContext(typeof(QuiryContext))]
-    [Migration("20191017191300_users")]
-    partial class users
+    [Migration("20191029200124_initialize")]
+    partial class initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -148,6 +148,32 @@ namespace QuiryForum.Migrations
                     b.ToTable("AccountFollowers");
                 });
 
+            modelBuilder.Entity("QuiryForum.Models.Answer", b =>
+                {
+                    b.Property<int>("PostID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AccountId");
+
+                    b.Property<string>("Content")
+                        .IsRequired();
+
+                    b.Property<int>("Dislikes");
+
+                    b.Property<int>("Likes");
+
+                    b.Property<int?>("QuestionPostID");
+
+                    b.HasKey("PostID");
+
+                    b.HasIndex("AccountId");
+
+                    b.HasIndex("QuestionPostID");
+
+                    b.ToTable("Answers");
+                });
+
             modelBuilder.Entity("QuiryForum.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
@@ -196,6 +222,7 @@ namespace QuiryForum.Migrations
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -224,9 +251,56 @@ namespace QuiryForum.Migrations
                     b.HasKey("CategoryID");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Travel"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Sports"
+                        },
+                        new
+                        {
+                            CategoryID = 3,
+                            CategoryName = "Health"
+                        },
+                        new
+                        {
+                            CategoryID = 4,
+                            CategoryName = "Pets"
+                        },
+                        new
+                        {
+                            CategoryID = 5,
+                            CategoryName = "Home & Garden"
+                        },
+                        new
+                        {
+                            CategoryID = 6,
+                            CategoryName = "Dining Out"
+                        },
+                        new
+                        {
+                            CategoryID = 7,
+                            CategoryName = "Cooking"
+                        },
+                        new
+                        {
+                            CategoryID = 8,
+                            CategoryName = "Computers & Electronics"
+                        },
+                        new
+                        {
+                            CategoryID = 9,
+                            CategoryName = "Family & Relationships"
+                        });
                 });
 
-            modelBuilder.Entity("QuiryForum.Models.Post", b =>
+            modelBuilder.Entity("QuiryForum.Models.Question", b =>
                 {
                     b.Property<int>("PostID")
                         .ValueGeneratedOnAdd()
@@ -234,13 +308,21 @@ namespace QuiryForum.Migrations
 
                     b.Property<string>("AccountId");
 
+                    b.Property<int?>("CategoryID");
+
                     b.Property<string>("Content");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(300);
 
                     b.HasKey("PostID");
 
                     b.HasIndex("AccountId");
 
-                    b.ToTable("Posts");
+                    b.HasIndex("CategoryID");
+
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -301,11 +383,29 @@ namespace QuiryForum.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("QuiryForum.Models.Post", b =>
+            modelBuilder.Entity("QuiryForum.Models.Answer", b =>
                 {
                     b.HasOne("QuiryForum.Models.ApplicationUser", "Account")
                         .WithMany()
                         .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("QuiryForum.Models.Question", "Question")
+                        .WithMany("Answers")
+                        .HasForeignKey("QuestionPostID")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("QuiryForum.Models.Question", b =>
+                {
+                    b.HasOne("QuiryForum.Models.ApplicationUser", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("QuiryForum.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

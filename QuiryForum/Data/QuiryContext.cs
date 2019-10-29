@@ -31,6 +31,18 @@ namespace QuiryForum.Data
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
 
+            modelBuilder.Entity<Category>().HasData(
+                new { CategoryID = 1, CategoryName = "Travel" },
+                new { CategoryID = 2, CategoryName = "Sports" },
+                new { CategoryID = 3, CategoryName = "Health" },
+                new { CategoryID = 4, CategoryName = "Pets" },
+                new { CategoryID = 5, CategoryName = "Home & Garden" },
+                new { CategoryID = 6, CategoryName = "Dining Out" },
+                new { CategoryID = 7, CategoryName = "Cooking" },
+                new { CategoryID = 8, CategoryName = "Computers & Electronics" },
+                new { CategoryID = 9, CategoryName = "Family & Relationships" }
+                );
+
             modelBuilder.Entity<AccountFollowers>()
                .HasKey(b => new { b.UserID, b.FollowerID });
 
