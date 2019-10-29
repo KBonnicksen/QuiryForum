@@ -27,7 +27,6 @@ namespace QuiryForum.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
@@ -40,6 +39,7 @@ namespace QuiryForum.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 256, nullable: false),
                     Email = table.Column<string>(maxLength: 256, nullable: false),
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: true),
@@ -196,22 +196,59 @@ namespace QuiryForum.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Posts",
+                name: "Questions",
                 columns: table => new
                 {
                     PostID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AccountId = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(nullable: true)
+                    Content = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(maxLength: 300, nullable: false),
+                    CategoryID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Posts", x => x.PostID);
+                    table.PrimaryKey("PK_Questions", x => x.PostID);
                     table.ForeignKey(
-                        name: "FK_Posts_AspNetUsers_AccountId",
+                        name: "FK_Questions_AspNetUsers_AccountId",
                         column: x => x.AccountId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Questions_Categories_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Answers",
+                columns: table => new
+                {
+                    PostID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AccountId = table.Column<string>(nullable: true),
+                    QuestionPostID = table.Column<int>(nullable: true),
+                    Likes = table.Column<int>(nullable: false),
+                    Dislikes = table.Column<int>(nullable: false),
+                    Content = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Answers", x => x.PostID);
+                    table.ForeignKey(
+                        name: "FK_Answers_AspNetUsers_AccountId",
+                        column: x => x.AccountId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Answers_Questions_QuestionPostID",
+                        column: x => x.QuestionPostID,
+                        principalTable: "Questions",
+                        principalColumn: "PostID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -219,6 +256,16 @@ namespace QuiryForum.Migrations
                 name: "IX_AccountFollowers_FollowerID",
                 table: "AccountFollowers",
                 column: "FollowerID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_AccountId",
+                table: "Answers",
+                column: "AccountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_QuestionPostID",
+                table: "Answers",
+                column: "QuestionPostID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -260,15 +307,23 @@ namespace QuiryForum.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Posts_AccountId",
-                table: "Posts",
+                name: "IX_Questions_AccountId",
+                table: "Questions",
                 column: "AccountId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Questions_CategoryID",
+                table: "Questions",
+                column: "CategoryID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "AccountFollowers");
+
+            migrationBuilder.DropTable(
+                name: "Answers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -286,16 +341,16 @@ namespace QuiryForum.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Posts");
+                name: "Questions");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }

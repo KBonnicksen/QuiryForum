@@ -1,3 +1,5 @@
+  [![Build Status](https://dev.azure.com/kelseybon/QuiryForum/_apis/build/status/KBonnicksen.QuiryForum%20(1)?branchName=master)](https://dev.azure.com/kelseybon/QuiryForum/_build/latest?definitionId=2&branchName=master)
+  
   # Quiry 
   Quiry is a mock-up Q & A forum site. This is a project I am working on 
   for my Advanced .NET Web Development class.
