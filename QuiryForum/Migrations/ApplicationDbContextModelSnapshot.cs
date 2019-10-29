@@ -249,6 +249,53 @@ namespace QuiryForum.Migrations
                     b.HasKey("CategoryID");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Travel"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Sports"
+                        },
+                        new
+                        {
+                            CategoryID = 3,
+                            CategoryName = "Health"
+                        },
+                        new
+                        {
+                            CategoryID = 4,
+                            CategoryName = "Pets"
+                        },
+                        new
+                        {
+                            CategoryID = 5,
+                            CategoryName = "Home & Garden"
+                        },
+                        new
+                        {
+                            CategoryID = 6,
+                            CategoryName = "Dining Out"
+                        },
+                        new
+                        {
+                            CategoryID = 7,
+                            CategoryName = "Cooking"
+                        },
+                        new
+                        {
+                            CategoryID = 8,
+                            CategoryName = "Computers & Electronics"
+                        },
+                        new
+                        {
+                            CategoryID = 9,
+                            CategoryName = "Family & Relationships"
+                        });
                 });
 
             modelBuilder.Entity("QuiryForum.Models.Question", b =>
