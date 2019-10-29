@@ -51,7 +51,7 @@ namespace QuiryForum.Data
         public static async Task<List<Question>> GetAllQuestions(QuiryContext context)
         {
             List<Question> questions = await context.Questions
-                                                 .OrderBy(q => q.PostingDate)
+                                                 .OrderByDescending(q => q.PostingDate)
                                                  .ToListAsync();
             return questions;
         }
