@@ -17,9 +17,11 @@ namespace QuiryForum.Controllers
             this.context = context;
         }
 
-        public IActionResult Index() 
+        public async Task<IActionResult> Index() 
         {
-            return View();
+            List<Question> allQuestions = await QuestionDB.GetAllQuestions(context);
+
+            return View(allQuestions);
         }
 
         public IActionResult Ask()
@@ -37,7 +39,7 @@ namespace QuiryForum.Controllers
                 return RedirectToAction("Index");
             };
 
-            return View(q);
+            return View();
         }
     }
 }
