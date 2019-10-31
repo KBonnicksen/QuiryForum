@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuiryForum.Migrations
 {
-    public partial class init : Migration
+    public partial class initalize : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -201,7 +201,7 @@ namespace QuiryForum.Migrations
                 {
                     PostID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AccountID = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
                     Title = table.Column<string>(maxLength: 300, nullable: false),
                     CategoryID = table.Column<int>(nullable: false)
@@ -215,6 +215,12 @@ namespace QuiryForum.Migrations
                         principalTable: "Categories",
                         principalColumn: "CategoryID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Questions_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -223,7 +229,7 @@ namespace QuiryForum.Migrations
                 {
                     PostID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AccountID = table.Column<string>(nullable: true),
+                    UserId = table.Column<string>(nullable: true),
                     QuestionPostID = table.Column<int>(nullable: true),
                     Likes = table.Column<int>(nullable: false),
                     Dislikes = table.Column<int>(nullable: false),
@@ -238,6 +244,12 @@ namespace QuiryForum.Migrations
                         principalTable: "Questions",
                         principalColumn: "PostID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Answers_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -245,10 +257,11 @@ namespace QuiryForum.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateOfBirth", "Description", "Email", "EmailConfirmed", "FirstName", "IsPrivate", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "3efb2843-2839-4730-a120-aba7f9a4323e", new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "troiboi@gmail.com", true, "Troi", false, null, false, null, null, null, null, null, false, null, false, "TroiBoi" },
-                    { "2", 0, "bf573fd7-1b99-4006-8bf3-38964a8a884b", new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "kanye@kanye.com", true, "Kanye", false, null, false, null, null, null, null, null, false, null, false, "KanyeWest" },
-                    { "4", 0, "a0d46d41-9fcd-492e-b239-71117cfc478b", new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "illy@bass.com", true, "Lenny", false, null, false, null, null, null, null, null, false, null, false, "Illenium" },
-                    { "5", 0, "fd6c2a63-63dd-429b-b827-fed48f39ef18", new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "NightNight@gmail.com", true, "Mare", false, null, false, null, null, null, null, null, false, null, false, "Nightmare" }
+                    { "1", 0, "063d2614-6ee2-4f49-bef2-431eb2917d98", new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "troiboi@gmail.com", true, "Troi", false, null, false, null, null, null, null, null, false, null, false, "TroiBoi" },
+                    { "2", 0, "9a4b145c-0487-494b-9785-39271fa7fffe", new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "kanye@kanye.com", true, "Kanye", false, null, false, null, null, null, null, null, false, null, false, "KanyeWest" },
+                    { "3", 0, "dc2f5865-b055-49e1-a121-aecbf107cd37", new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "lazyboys@catsRule.com", true, "Taco", false, null, false, null, null, null, null, null, false, null, false, "TacoRafa" },
+                    { "4", 0, "d97168db-fe83-4811-8b4e-851bb95c11f6", new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "illy@bass.com", true, "Lenny", false, null, false, null, null, null, null, null, false, null, false, "Illenium" },
+                    { "5", 0, "c16eeca6-6203-4d50-9743-c62369baa850", new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "NightNight@gmail.com", true, "Mare", false, null, false, null, null, null, null, null, false, null, false, "Nightmare" }
                 });
 
             migrationBuilder.InsertData(
@@ -277,6 +290,11 @@ namespace QuiryForum.Migrations
                 name: "IX_Answers_QuestionPostID",
                 table: "Answers",
                 column: "QuestionPostID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Answers_UserId",
+                table: "Answers",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -321,6 +339,11 @@ namespace QuiryForum.Migrations
                 name: "IX_Questions_CategoryID",
                 table: "Questions",
                 column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Questions_UserId",
+                table: "Questions",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -353,10 +376,10 @@ namespace QuiryForum.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "AspNetUsers");
         }
     }
 }

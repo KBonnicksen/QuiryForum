@@ -10,8 +10,8 @@ using QuiryForum.Data;
 namespace QuiryForum.Migrations
 {
     [DbContext(typeof(QuiryContext))]
-    [Migration("20191031021933_quest")]
-    partial class quest
+    [Migration("20191031034043_initalize")]
+    partial class initalize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -154,8 +154,6 @@ namespace QuiryForum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccountID");
-
                     b.Property<string>("Content")
                         .IsRequired();
 
@@ -165,9 +163,13 @@ namespace QuiryForum.Migrations
 
                     b.Property<int?>("QuestionPostID");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("PostID");
 
                     b.HasIndex("QuestionPostID");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Answers");
                 });
@@ -240,7 +242,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b4d74ab6-106a-4746-98a8-497a00e9fe44",
+                            ConcurrencyStamp = "063d2614-6ee2-4f49-bef2-431eb2917d98",
                             DateOfBirth = new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "troiboi@gmail.com",
                             EmailConfirmed = true,
@@ -255,7 +257,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "721b5e48-3680-41ce-a954-e222ee76cab8",
+                            ConcurrencyStamp = "9a4b145c-0487-494b-9785-39271fa7fffe",
                             DateOfBirth = new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kanye@kanye.com",
                             EmailConfirmed = true,
@@ -268,9 +270,24 @@ namespace QuiryForum.Migrations
                         },
                         new
                         {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "dc2f5865-b055-49e1-a121-aecbf107cd37",
+                            DateOfBirth = new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "lazyboys@catsRule.com",
+                            EmailConfirmed = true,
+                            FirstName = "Taco",
+                            IsPrivate = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "TacoRafa"
+                        },
+                        new
+                        {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f7e83811-df6c-4889-8629-0e0007627a96",
+                            ConcurrencyStamp = "d97168db-fe83-4811-8b4e-851bb95c11f6",
                             DateOfBirth = new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "illy@bass.com",
                             EmailConfirmed = true,
@@ -285,7 +302,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e3b33831-207c-42d6-bcdf-f0111d3f3226",
+                            ConcurrencyStamp = "c16eeca6-6203-4d50-9743-c62369baa850",
                             DateOfBirth = new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "NightNight@gmail.com",
                             EmailConfirmed = true,
@@ -371,8 +388,6 @@ namespace QuiryForum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccountID");
-
                     b.Property<int>("CategoryID");
 
                     b.Property<string>("Content");
@@ -381,97 +396,15 @@ namespace QuiryForum.Migrations
                         .IsRequired()
                         .HasMaxLength(300);
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("PostID");
 
                     b.HasIndex("CategoryID");
 
-                    b.ToTable("Questions");
+                    b.HasIndex("UserId");
 
-                    b.HasData(
-                        new
-                        {
-                            PostID = 1,
-                            AccountID = "1",
-                            CategoryID = 1,
-                            Title = "When U go to restaurants will they start charging u service charge & plus tip ?"
-                        },
-                        new
-                        {
-                            PostID = 2,
-                            AccountID = "2",
-                            CategoryID = 3,
-                            Title = "Why does McDonald's taste so bad?"
-                        },
-                        new
-                        {
-                            PostID = 3,
-                            AccountID = "3",
-                            CategoryID = 4,
-                            Content = "She gave me the wrong change",
-                            Title = "Why couldn't she give me different change? was she dumb?"
-                        },
-                        new
-                        {
-                            PostID = 4,
-                            AccountID = "4",
-                            CategoryID = 3,
-                            Content = "They look the same",
-                            Title = "What is the difference between subway and quiznos?"
-                        },
-                        new
-                        {
-                            PostID = 5,
-                            AccountID = "5",
-                            CategoryID = 8,
-                            Content = "Since it discriminates on the basis of race.",
-                            Title = "Isn’t affirmative action a violation of the civil rights act?"
-                        },
-                        new
-                        {
-                            PostID = 6,
-                            AccountID = "1",
-                            CategoryID = 9,
-                            Content = "Seriously, if you want to get a job that pays above minimum wage, get some job training like medical assisting or dental assisting.",
-                            Title = "Why do people want to raise the minimum wage?"
-                        },
-                        new
-                        {
-                            PostID = 7,
-                            AccountID = "2",
-                            CategoryID = 1,
-                            Content = "I need answers.",
-                            Title = "Why havent we landed on the sun?"
-                        },
-                        new
-                        {
-                            PostID = 8,
-                            AccountID = "3",
-                            CategoryID = 2,
-                            Content = "What you find tastiest - fish, salmon, shrimps, shellfish, chicken, turkey, pork, bacon, sausage, beef???",
-                            Title = "What is the tastiest meat according to you?"
-                        },
-                        new
-                        {
-                            PostID = 9,
-                            AccountID = "4",
-                            CategoryID = 6,
-                            Title = "If you vote Democrat, are you telling the world you are pro-communist?"
-                        },
-                        new
-                        {
-                            PostID = 10,
-                            AccountID = "5",
-                            CategoryID = 7,
-                            Title = "My kid's school want to take them on a field trip to a windmill farm, but what about windmill cancer?"
-                        },
-                        new
-                        {
-                            PostID = 11,
-                            AccountID = "5",
-                            CategoryID = 9,
-                            Content = "What is the most endangered island in the world?",
-                            Title = "What is the most endangered island in the world?"
-                        });
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -538,6 +471,11 @@ namespace QuiryForum.Migrations
                         .WithMany("Answers")
                         .HasForeignKey("QuestionPostID")
                         .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("QuiryForum.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("QuiryForum.Models.Question", b =>
@@ -545,6 +483,11 @@ namespace QuiryForum.Migrations
                     b.HasOne("QuiryForum.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("QuiryForum.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618

@@ -152,8 +152,6 @@ namespace QuiryForum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccountID");
-
                     b.Property<string>("Content")
                         .IsRequired();
 
@@ -163,9 +161,13 @@ namespace QuiryForum.Migrations
 
                     b.Property<int?>("QuestionPostID");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("PostID");
 
                     b.HasIndex("QuestionPostID");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Answers");
                 });
@@ -238,7 +240,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b4d74ab6-106a-4746-98a8-497a00e9fe44",
+                            ConcurrencyStamp = "f8a07d30-241b-4983-b1f3-7b1fe7260001",
                             DateOfBirth = new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "troiboi@gmail.com",
                             EmailConfirmed = true,
@@ -253,7 +255,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "721b5e48-3680-41ce-a954-e222ee76cab8",
+                            ConcurrencyStamp = "2424f8fd-94d6-4bf5-967c-d13a40b8d2c1",
                             DateOfBirth = new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kanye@kanye.com",
                             EmailConfirmed = true,
@@ -266,9 +268,24 @@ namespace QuiryForum.Migrations
                         },
                         new
                         {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "4b42f746-4af0-410c-b04f-90afa353751e",
+                            DateOfBirth = new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "lazyboys@catsRule.com",
+                            EmailConfirmed = true,
+                            FirstName = "Taco",
+                            IsPrivate = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "TacoRafa"
+                        },
+                        new
+                        {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f7e83811-df6c-4889-8629-0e0007627a96",
+                            ConcurrencyStamp = "3c379962-24d4-4e6c-81b3-5a9a302872d6",
                             DateOfBirth = new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "illy@bass.com",
                             EmailConfirmed = true,
@@ -283,7 +300,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e3b33831-207c-42d6-bcdf-f0111d3f3226",
+                            ConcurrencyStamp = "9254de0b-8603-42ad-a25e-79ac4f5cb719",
                             DateOfBirth = new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "NightNight@gmail.com",
                             EmailConfirmed = true,
@@ -369,8 +386,6 @@ namespace QuiryForum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccountID");
-
                     b.Property<int>("CategoryID");
 
                     b.Property<string>("Content");
@@ -379,9 +394,13 @@ namespace QuiryForum.Migrations
                         .IsRequired()
                         .HasMaxLength(300);
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("PostID");
 
                     b.HasIndex("CategoryID");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Questions");
 
@@ -389,86 +408,86 @@ namespace QuiryForum.Migrations
                         new
                         {
                             PostID = 1,
-                            AccountID = "1",
                             CategoryID = 1,
-                            Title = "When U go to restaurants will they start charging u service charge & plus tip ?"
+                            Title = "When U go to restaurants will they start charging u service charge & plus tip ?",
+                            UserId = "1"
                         },
                         new
                         {
                             PostID = 2,
-                            AccountID = "2",
                             CategoryID = 3,
-                            Title = "Why does McDonald's taste so bad?"
+                            Title = "Why does McDonald's taste so bad?",
+                            UserId = "2"
                         },
                         new
                         {
                             PostID = 3,
-                            AccountID = "3",
                             CategoryID = 4,
                             Content = "She gave me the wrong change",
-                            Title = "Why couldn't she give me different change? was she dumb?"
+                            Title = "Why couldn't she give me different change? was she dumb?",
+                            UserId = "3"
                         },
                         new
                         {
                             PostID = 4,
-                            AccountID = "4",
                             CategoryID = 3,
                             Content = "They look the same",
-                            Title = "What is the difference between subway and quiznos?"
+                            Title = "What is the difference between subway and quiznos?",
+                            UserId = "4"
                         },
                         new
                         {
                             PostID = 5,
-                            AccountID = "5",
                             CategoryID = 8,
                             Content = "Since it discriminates on the basis of race.",
-                            Title = "Isn’t affirmative action a violation of the civil rights act?"
+                            Title = "Isn’t affirmative action a violation of the civil rights act?",
+                            UserId = "5"
                         },
                         new
                         {
                             PostID = 6,
-                            AccountID = "1",
                             CategoryID = 9,
                             Content = "Seriously, if you want to get a job that pays above minimum wage, get some job training like medical assisting or dental assisting.",
-                            Title = "Why do people want to raise the minimum wage?"
+                            Title = "Why do people want to raise the minimum wage?",
+                            UserId = "1"
                         },
                         new
                         {
                             PostID = 7,
-                            AccountID = "2",
                             CategoryID = 1,
                             Content = "I need answers.",
-                            Title = "Why havent we landed on the sun?"
+                            Title = "Why havent we landed on the sun?",
+                            UserId = "2"
                         },
                         new
                         {
                             PostID = 8,
-                            AccountID = "3",
                             CategoryID = 2,
                             Content = "What you find tastiest - fish, salmon, shrimps, shellfish, chicken, turkey, pork, bacon, sausage, beef???",
-                            Title = "What is the tastiest meat according to you?"
+                            Title = "What is the tastiest meat according to you?",
+                            UserId = "3"
                         },
                         new
                         {
                             PostID = 9,
-                            AccountID = "4",
                             CategoryID = 6,
-                            Title = "If you vote Democrat, are you telling the world you are pro-communist?"
+                            Title = "If you vote Democrat, are you telling the world you are pro-communist?",
+                            UserId = "4"
                         },
                         new
                         {
                             PostID = 10,
-                            AccountID = "5",
                             CategoryID = 7,
-                            Title = "My kid's school want to take them on a field trip to a windmill farm, but what about windmill cancer?"
+                            Title = "My kid's school want to take them on a field trip to a windmill farm, but what about windmill cancer?",
+                            UserId = "5"
                         },
                         new
                         {
                             PostID = 11,
-                            AccountID = "5",
                             CategoryID = 9,
                             Content = "What is the most endangered island in the world?",
-                            Title = "What is the most endangered island in the world?"
+                            Title = "What is the most endangered island in the world?",
+                            UserId = "5"
                         });
                 });
 
@@ -536,6 +555,11 @@ namespace QuiryForum.Migrations
                         .WithMany("Answers")
                         .HasForeignKey("QuestionPostID")
                         .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("QuiryForum.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("QuiryForum.Models.Question", b =>
@@ -543,6 +567,11 @@ namespace QuiryForum.Migrations
                     b.HasOne("QuiryForum.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("QuiryForum.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
