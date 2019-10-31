@@ -10,8 +10,8 @@ using QuiryForum.Data;
 namespace QuiryForum.Migrations
 {
     [DbContext(typeof(QuiryContext))]
-    [Migration("20191029200124_initialize")]
-    partial class initialize
+    [Migration("20191031021933_quest")]
+    partial class quest
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -154,7 +154,7 @@ namespace QuiryForum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccountId");
+                    b.Property<string>("AccountID");
 
                     b.Property<string>("Content")
                         .IsRequired();
@@ -166,8 +166,6 @@ namespace QuiryForum.Migrations
                     b.Property<int?>("QuestionPostID");
 
                     b.HasKey("PostID");
-
-                    b.HasIndex("AccountId");
 
                     b.HasIndex("QuestionPostID");
 
@@ -236,6 +234,68 @@ namespace QuiryForum.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b4d74ab6-106a-4746-98a8-497a00e9fe44",
+                            DateOfBirth = new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "troiboi@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Troi",
+                            IsPrivate = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "TroiBoi"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "721b5e48-3680-41ce-a954-e222ee76cab8",
+                            DateOfBirth = new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "kanye@kanye.com",
+                            EmailConfirmed = true,
+                            FirstName = "Kanye",
+                            IsPrivate = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "KanyeWest"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f7e83811-df6c-4889-8629-0e0007627a96",
+                            DateOfBirth = new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "illy@bass.com",
+                            EmailConfirmed = true,
+                            FirstName = "Lenny",
+                            IsPrivate = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "Illenium"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e3b33831-207c-42d6-bcdf-f0111d3f3226",
+                            DateOfBirth = new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "NightNight@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Mare",
+                            IsPrivate = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "Nightmare"
+                        });
                 });
 
             modelBuilder.Entity("QuiryForum.Models.Category", b =>
@@ -276,27 +336,32 @@ namespace QuiryForum.Migrations
                         new
                         {
                             CategoryID = 5,
-                            CategoryName = "Home & Garden"
+                            CategoryName = "Entertainment"
                         },
                         new
                         {
                             CategoryID = 6,
-                            CategoryName = "Dining Out"
+                            CategoryName = "Food"
                         },
                         new
                         {
                             CategoryID = 7,
-                            CategoryName = "Cooking"
+                            CategoryName = "Environment"
                         },
                         new
                         {
                             CategoryID = 8,
-                            CategoryName = "Computers & Electronics"
+                            CategoryName = "Electronics"
                         },
                         new
                         {
                             CategoryID = 9,
                             CategoryName = "Family & Relationships"
+                        },
+                        new
+                        {
+                            CategoryID = 10,
+                            CategoryName = "Business"
                         });
                 });
 
@@ -306,9 +371,9 @@ namespace QuiryForum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccountId");
+                    b.Property<string>("AccountID");
 
-                    b.Property<int?>("CategoryID");
+                    b.Property<int>("CategoryID");
 
                     b.Property<string>("Content");
 
@@ -318,11 +383,95 @@ namespace QuiryForum.Migrations
 
                     b.HasKey("PostID");
 
-                    b.HasIndex("AccountId");
-
                     b.HasIndex("CategoryID");
 
                     b.ToTable("Questions");
+
+                    b.HasData(
+                        new
+                        {
+                            PostID = 1,
+                            AccountID = "1",
+                            CategoryID = 1,
+                            Title = "When U go to restaurants will they start charging u service charge & plus tip ?"
+                        },
+                        new
+                        {
+                            PostID = 2,
+                            AccountID = "2",
+                            CategoryID = 3,
+                            Title = "Why does McDonald's taste so bad?"
+                        },
+                        new
+                        {
+                            PostID = 3,
+                            AccountID = "3",
+                            CategoryID = 4,
+                            Content = "She gave me the wrong change",
+                            Title = "Why couldn't she give me different change? was she dumb?"
+                        },
+                        new
+                        {
+                            PostID = 4,
+                            AccountID = "4",
+                            CategoryID = 3,
+                            Content = "They look the same",
+                            Title = "What is the difference between subway and quiznos?"
+                        },
+                        new
+                        {
+                            PostID = 5,
+                            AccountID = "5",
+                            CategoryID = 8,
+                            Content = "Since it discriminates on the basis of race.",
+                            Title = "Isn’t affirmative action a violation of the civil rights act?"
+                        },
+                        new
+                        {
+                            PostID = 6,
+                            AccountID = "1",
+                            CategoryID = 9,
+                            Content = "Seriously, if you want to get a job that pays above minimum wage, get some job training like medical assisting or dental assisting.",
+                            Title = "Why do people want to raise the minimum wage?"
+                        },
+                        new
+                        {
+                            PostID = 7,
+                            AccountID = "2",
+                            CategoryID = 1,
+                            Content = "I need answers.",
+                            Title = "Why havent we landed on the sun?"
+                        },
+                        new
+                        {
+                            PostID = 8,
+                            AccountID = "3",
+                            CategoryID = 2,
+                            Content = "What you find tastiest - fish, salmon, shrimps, shellfish, chicken, turkey, pork, bacon, sausage, beef???",
+                            Title = "What is the tastiest meat according to you?"
+                        },
+                        new
+                        {
+                            PostID = 9,
+                            AccountID = "4",
+                            CategoryID = 6,
+                            Title = "If you vote Democrat, are you telling the world you are pro-communist?"
+                        },
+                        new
+                        {
+                            PostID = 10,
+                            AccountID = "5",
+                            CategoryID = 7,
+                            Title = "My kid's school want to take them on a field trip to a windmill farm, but what about windmill cancer?"
+                        },
+                        new
+                        {
+                            PostID = 11,
+                            AccountID = "5",
+                            CategoryID = 9,
+                            Content = "What is the most endangered island in the world?",
+                            Title = "What is the most endangered island in the world?"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -385,11 +534,6 @@ namespace QuiryForum.Migrations
 
             modelBuilder.Entity("QuiryForum.Models.Answer", b =>
                 {
-                    b.HasOne("QuiryForum.Models.ApplicationUser", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("QuiryForum.Models.Question", "Question")
                         .WithMany("Answers")
                         .HasForeignKey("QuestionPostID")
@@ -398,11 +542,6 @@ namespace QuiryForum.Migrations
 
             modelBuilder.Entity("QuiryForum.Models.Question", b =>
                 {
-                    b.HasOne("QuiryForum.Models.ApplicationUser", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("QuiryForum.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID")
