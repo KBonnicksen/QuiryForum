@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,10 +24,14 @@ namespace QuiryForum.Models
         [Key]
         public int PostID { get; set; }
 
+        //The ID of the Creator of the post
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+
         /// <summary>
         /// The account that created the post.
         /// </summary>
-        public ApplicationUser Account { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         /// <summary>
         /// Represents the date the post was created.
@@ -66,6 +71,8 @@ namespace QuiryForum.Models
         /// The category that the user has chosen for the question.
         /// </summary>
         public Category Category { get; set; }
+
+        public int CategoryID { get; set; }
     }
 
     /// <summary>
