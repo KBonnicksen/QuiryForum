@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuiryForum.Data;
 
 namespace QuiryForum.Migrations
 {
     [DbContext(typeof(QuiryContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191031034043_initalize")]
+    partial class initalize
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,8 +154,6 @@ namespace QuiryForum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccountId");
-
                     b.Property<string>("Content")
                         .IsRequired();
 
@@ -163,11 +163,13 @@ namespace QuiryForum.Migrations
 
                     b.Property<int?>("QuestionPostID");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("PostID");
 
-                    b.HasIndex("AccountId");
-
                     b.HasIndex("QuestionPostID");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Answers");
                 });
@@ -234,6 +236,83 @@ namespace QuiryForum.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "063d2614-6ee2-4f49-bef2-431eb2917d98",
+                            DateOfBirth = new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "troiboi@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Troi",
+                            IsPrivate = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "TroiBoi"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9a4b145c-0487-494b-9785-39271fa7fffe",
+                            DateOfBirth = new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "kanye@kanye.com",
+                            EmailConfirmed = true,
+                            FirstName = "Kanye",
+                            IsPrivate = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "KanyeWest"
+                        },
+                        new
+                        {
+                            Id = "3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "dc2f5865-b055-49e1-a121-aecbf107cd37",
+                            DateOfBirth = new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "lazyboys@catsRule.com",
+                            EmailConfirmed = true,
+                            FirstName = "Taco",
+                            IsPrivate = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "TacoRafa"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d97168db-fe83-4811-8b4e-851bb95c11f6",
+                            DateOfBirth = new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "illy@bass.com",
+                            EmailConfirmed = true,
+                            FirstName = "Lenny",
+                            IsPrivate = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "Illenium"
+                        },
+                        new
+                        {
+                            Id = "5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "c16eeca6-6203-4d50-9743-c62369baa850",
+                            DateOfBirth = new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "NightNight@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Mare",
+                            IsPrivate = false,
+                            LockoutEnabled = false,
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "Nightmare"
+                        });
                 });
 
             modelBuilder.Entity("QuiryForum.Models.Category", b =>
@@ -274,27 +353,32 @@ namespace QuiryForum.Migrations
                         new
                         {
                             CategoryID = 5,
-                            CategoryName = "Home & Garden"
+                            CategoryName = "Entertainment"
                         },
                         new
                         {
                             CategoryID = 6,
-                            CategoryName = "Dining Out"
+                            CategoryName = "Food"
                         },
                         new
                         {
                             CategoryID = 7,
-                            CategoryName = "Cooking"
+                            CategoryName = "Environment"
                         },
                         new
                         {
                             CategoryID = 8,
-                            CategoryName = "Computers & Electronics"
+                            CategoryName = "Electronics"
                         },
                         new
                         {
                             CategoryID = 9,
                             CategoryName = "Family & Relationships"
+                        },
+                        new
+                        {
+                            CategoryID = 10,
+                            CategoryName = "Business"
                         });
                 });
 
@@ -304,9 +388,7 @@ namespace QuiryForum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccountId");
-
-                    b.Property<int?>("CategoryID");
+                    b.Property<int>("CategoryID");
 
                     b.Property<string>("Content");
 
@@ -314,11 +396,13 @@ namespace QuiryForum.Migrations
                         .IsRequired()
                         .HasMaxLength(300);
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("PostID");
 
-                    b.HasIndex("AccountId");
-
                     b.HasIndex("CategoryID");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Questions");
                 });
@@ -383,27 +467,27 @@ namespace QuiryForum.Migrations
 
             modelBuilder.Entity("QuiryForum.Models.Answer", b =>
                 {
-                    b.HasOne("QuiryForum.Models.ApplicationUser", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("QuiryForum.Models.Question", "Question")
                         .WithMany("Answers")
                         .HasForeignKey("QuestionPostID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("QuiryForum.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("QuiryForum.Models.Question", b =>
                 {
-                    b.HasOne("QuiryForum.Models.ApplicationUser", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("QuiryForum.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("QuiryForum.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
