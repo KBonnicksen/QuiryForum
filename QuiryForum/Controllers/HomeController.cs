@@ -5,14 +5,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using QuiryForum.Models;
+using QuiryForum.Data;
 
 namespace QuiryForum.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly QuiryContext context;
+
+        public HomeController(QuiryContext context)
         {
-            return View();
+            this.context = context;
+        }
+
+        public async Task<IActionResult> Index(int? id)
+        {
+            int ID = id ?? -1;
+            if (ID != -1)
+            {
+                List<Question> questions = await QuestionDB.GetQuestionsByCategory(ID, context);
+                return View(questions);
+            }
+            List<Question> allQuestions = await QuestionDB.GetAllQuestions(context);
+            return View(allQuestions);
         }
 
         public IActionResult Privacy()

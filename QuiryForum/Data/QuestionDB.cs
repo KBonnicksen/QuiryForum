@@ -68,6 +68,10 @@ namespace QuiryForum.Data
             return q;
         }
 
-        //get all answers to a given question
+        public static async Task<List<Question>> GetQuestionsByCategory(int id, QuiryContext context)
+        {
+            List<Question> q = await (context.Questions.Where(m => m.CategoryID == id)).ToListAsync();
+            return q;
+        }
     }
 }
