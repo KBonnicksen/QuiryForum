@@ -10,7 +10,7 @@ namespace QuiryForum.Data
 {
     public class UserDB
     {
-        private static readonly UserManager<ApplicationUser> userManager;
+        //private static readonly UserManager<ApplicationUser> userManager;
 
         public UserDB(UserManager<ApplicationUser> userManager)
         {

@@ -23,7 +23,9 @@ namespace QuiryForum.Controllers
             int ID = id ?? -1;
             if (ID != -1)
             {
+                Category c = await CategoryDB.GetCategoryByID(ID, context);
                 List<Question> questions = await QuestionDB.GetQuestionsByCategory(ID, context);
+                ViewData["CategoryTitle"] = c.CategoryName;
                 return View(questions);
             }
             List<Question> allQuestions = await QuestionDB.GetAllQuestions(context);

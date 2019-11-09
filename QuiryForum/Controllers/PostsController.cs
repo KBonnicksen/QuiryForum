@@ -17,11 +17,16 @@ namespace QuiryForum.Controllers
             this.context = context;
         }
 
-        public async Task<IActionResult> Index() 
-        {
-            List<Question> allQuestions = await QuestionDB.GetAllQuestions(context);
+        /* public async Task<IActionResult> Index() 
+         {
+             List<Question> allQuestions = await QuestionDB.GetAllQuestions(context);
 
-            return View(allQuestions);
+             return View(allQuestions);
+         }*/
+
+        public IActionResult ViewQuestion(Question q)
+        {
+            return View(q);
         }
 
         public IActionResult Ask()
