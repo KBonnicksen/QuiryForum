@@ -1,4 +1,6 @@
-﻿@{
+﻿@model  IEnumerable<Question>
+
+@{
     ViewData["Title"] = "Home";
 }
 
@@ -6,9 +8,27 @@
     <div class="col-8" id="main-content" style="border:dashed black .2em;">
         <div class="row" style="height:800px">
             <p class="temp-text">This is where the questions will be (sorted by most recent)</p>
+            <table class="thead-dark">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => m.Title)</th>
+                        <th>@Html.DisplayNameFor(m => m.Content)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Question q in Model)
+                    {
+                    <tr>
+                        <td>@Html.DisplayFor(m => q.Title)</td>
+                        <td>@Html.DisplayFor(m => q.Content)</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            
         </div>
     </div>
-
+        
     <div class="col-4">
         <div class="row" id="question-box" style="border:dashed green .2em; height:350px">
             <p>Box that prompts user to ask a question</p>
