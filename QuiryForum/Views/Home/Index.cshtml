@@ -1,34 +1,35 @@
-﻿@model  IEnumerable<Question>
+﻿@model IEnumerable<Question>
+@using QuiryForum.Data;
 
 @{
     ViewData["Title"] = "Home";
+    if (ViewData["CategoryTitle"] == null)
+    {
+        ViewData["CategoryTitle"] = "Recently Asked";
+    }
+
 }
 
 <div class="row">
-    <div class="col-8" id="main-content" style="border:dashed black .2em;">
+    <div class="col-8" id="main-content">
+        <h1>@ViewData["CategoryTitle"]</h1>
+        <hr />
         <div class="row" style="height:800px">
-            <p class="temp-text">This is where the questions will be (sorted by most recent)</p>
-            <table class="thead-dark">
-                <thead>
-                    <tr>
-                        <th>@Html.DisplayNameFor(m => m.Title)</th>
-                        <th>@Html.DisplayNameFor(m => m.Content)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (Question q in Model)
-                    {
-                    <tr>
-                        <td>@Html.DisplayFor(m => q.Title)</td>
-                        <td>@Html.DisplayFor(m => q.Content)</td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-            
+            @foreach (Question q in Model)
+            {
+                //ApplicationUser poster = await UserDB.GetUserByID(q.UserId);
+                <div class="card w-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(m => q.Title)</h5>
+                        <p class="card-text">@Html.DisplayFor(m => q.Content)</p>
+                        <!--<p class="card-text">poster.UserName</p>-->
+                        <p class="card-text">@Html.DisplayFor(m => q.PostingDate)</p>
+                    </div>
+                </div>
+            }
         </div>
     </div>
-        
+
     <div class="col-4">
         <div class="row" id="question-box" style="border:dashed green .2em; height:350px">
             <p>Box that prompts user to ask a question</p>
