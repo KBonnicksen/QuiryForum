@@ -10,7 +10,7 @@ using QuiryForum.Data;
 namespace QuiryForum.Migrations
 {
     [DbContext(typeof(QuiryContext))]
-    [Migration("20191110222022_init")]
+    [Migration("20191110032106_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -241,7 +241,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "27186b3c-e096-46b3-b11f-2b72179334fe",
+                            ConcurrencyStamp = "e08930c7-ddb5-4a5f-85bd-23286c914f5a",
                             DateOfBirth = new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "troiboi@gmail.com",
                             EmailConfirmed = true,
@@ -256,7 +256,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "51e13a8a-278b-4218-a262-5d5642d4ad84",
+                            ConcurrencyStamp = "ca237de3-8073-4d56-beea-9cabf9c6701f",
                             DateOfBirth = new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kanye@kanye.com",
                             EmailConfirmed = true,
@@ -271,7 +271,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1dbbc170-0c0d-496f-8353-c826d5fa6f05",
+                            ConcurrencyStamp = "bb8551db-f253-40ca-a5d6-a1c5364140a9",
                             DateOfBirth = new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "lazyboys@catsRule.com",
                             EmailConfirmed = true,
@@ -286,7 +286,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f554cd13-012c-4519-b374-cc0294986245",
+                            ConcurrencyStamp = "538dae5a-bf0b-41a8-8b89-b8d7813d6e1e",
                             DateOfBirth = new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "illy@bass.com",
                             EmailConfirmed = true,
@@ -301,7 +301,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b86f0d86-900b-43e5-8e47-d44cf7b24efc",
+                            ConcurrencyStamp = "0f466d55-4be1-4b2e-9abc-cdf93f354556",
                             DateOfBirth = new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "NightNight@gmail.com",
                             EmailConfirmed = true,
@@ -571,7 +571,7 @@ namespace QuiryForum.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("QuiryForum.Models.ApplicationUser", "User")
-                        .WithMany("UserQuestions")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });

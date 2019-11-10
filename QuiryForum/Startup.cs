@@ -35,8 +35,6 @@ namespace QuiryForum
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            //Working on bug, may not need
-            services.AddScoped<SignInManager<ApplicationUser>, SignInManager<ApplicationUser>>();
 
             services.AddDbContext<QuiryContext>(options =>
                 options.UseSqlServer(

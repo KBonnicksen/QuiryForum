@@ -13,6 +13,7 @@ namespace QuiryForum.Data
 
     public class QuiryContext : IdentityDbContext<ApplicationUser>
     {
+        //private UserManager<ApplicationUser> _userManager;
         public QuiryContext(DbContextOptions<QuiryContext> options)
             : base(options)
         {
