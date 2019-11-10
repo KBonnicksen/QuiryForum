@@ -17,6 +17,7 @@ namespace QuiryForum.Models
         public override string Email { get; set; }
 
         /// <summary>
+        /// 
         /// The first name of the user of the account.
         /// </summary>
         [Required]
