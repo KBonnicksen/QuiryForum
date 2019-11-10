@@ -1,0 +1,20 @@
+﻿@model QuiryForum.Models.Question
+@using QuiryForum.Data
+
+@{
+    ViewData["Title"] = "ViewQuestion";
+}
+<h3></h3>
+<div>
+    <div class="row">
+        <div class="card w-100">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(q => q.Title)</h5>
+                <p class="card-text">@Html.DisplayFor(q => q.Content)</p>
+                <p class="card-text">@Html.DisplayFor(q => q.User)</p>
+                <p class="card-text">@Html.DisplayFor(q => q.PostingDate)</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

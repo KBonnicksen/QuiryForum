@@ -10,8 +10,8 @@ using QuiryForum.Data;
 namespace QuiryForum.Migrations
 {
     [DbContext(typeof(QuiryContext))]
-    [Migration("20191031034043_initalize")]
-    partial class initalize
+    [Migration("20191110032106_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -222,7 +222,6 @@ namespace QuiryForum.Migrations
                     b.Property<bool>("TwoFactorEnabled");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -242,7 +241,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "063d2614-6ee2-4f49-bef2-431eb2917d98",
+                            ConcurrencyStamp = "e08930c7-ddb5-4a5f-85bd-23286c914f5a",
                             DateOfBirth = new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "troiboi@gmail.com",
                             EmailConfirmed = true,
@@ -257,7 +256,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9a4b145c-0487-494b-9785-39271fa7fffe",
+                            ConcurrencyStamp = "ca237de3-8073-4d56-beea-9cabf9c6701f",
                             DateOfBirth = new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kanye@kanye.com",
                             EmailConfirmed = true,
@@ -272,7 +271,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dc2f5865-b055-49e1-a121-aecbf107cd37",
+                            ConcurrencyStamp = "bb8551db-f253-40ca-a5d6-a1c5364140a9",
                             DateOfBirth = new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "lazyboys@catsRule.com",
                             EmailConfirmed = true,
@@ -287,7 +286,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d97168db-fe83-4811-8b4e-851bb95c11f6",
+                            ConcurrencyStamp = "538dae5a-bf0b-41a8-8b89-b8d7813d6e1e",
                             DateOfBirth = new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "illy@bass.com",
                             EmailConfirmed = true,
@@ -302,7 +301,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c16eeca6-6203-4d50-9743-c62369baa850",
+                            ConcurrencyStamp = "0f466d55-4be1-4b2e-9abc-cdf93f354556",
                             DateOfBirth = new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "NightNight@gmail.com",
                             EmailConfirmed = true,
@@ -405,6 +404,92 @@ namespace QuiryForum.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Questions");
+
+                    b.HasData(
+                        new
+                        {
+                            PostID = 1,
+                            CategoryID = 1,
+                            Title = "When U go to restaurants will they start charging u service charge & plus tip ?",
+                            UserId = "1"
+                        },
+                        new
+                        {
+                            PostID = 2,
+                            CategoryID = 3,
+                            Title = "Why does McDonald's taste so bad?",
+                            UserId = "2"
+                        },
+                        new
+                        {
+                            PostID = 3,
+                            CategoryID = 4,
+                            Content = "She gave me the wrong change",
+                            Title = "Why couldn't she give me different change? was she dumb?",
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            PostID = 4,
+                            CategoryID = 3,
+                            Content = "They look the same",
+                            Title = "What is the difference between subway and quiznos?",
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            PostID = 5,
+                            CategoryID = 8,
+                            Content = "Since it discriminates on the basis of race.",
+                            Title = "Isn’t affirmative action a violation of the civil rights act?",
+                            UserId = "5"
+                        },
+                        new
+                        {
+                            PostID = 6,
+                            CategoryID = 9,
+                            Content = "Seriously, if you want to get a job that pays above minimum wage, get some job training like medical assisting or dental assisting.",
+                            Title = "Why do people want to raise the minimum wage?",
+                            UserId = "1"
+                        },
+                        new
+                        {
+                            PostID = 7,
+                            CategoryID = 1,
+                            Content = "I need answers.",
+                            Title = "Why havent we landed on the sun?",
+                            UserId = "2"
+                        },
+                        new
+                        {
+                            PostID = 8,
+                            CategoryID = 2,
+                            Content = "What you find tastiest - fish, salmon, shrimps, shellfish, chicken, turkey, pork, bacon, sausage, beef???",
+                            Title = "What is the tastiest meat according to you?",
+                            UserId = "3"
+                        },
+                        new
+                        {
+                            PostID = 9,
+                            CategoryID = 6,
+                            Title = "If you vote Democrat, are you telling the world you are pro-communist?",
+                            UserId = "4"
+                        },
+                        new
+                        {
+                            PostID = 10,
+                            CategoryID = 7,
+                            Title = "My kid's school want to take them on a field trip to a windmill farm, but what about windmill cancer?",
+                            UserId = "5"
+                        },
+                        new
+                        {
+                            PostID = 11,
+                            CategoryID = 9,
+                            Content = "What is the most endangered island in the world?",
+                            Title = "What is the most endangered island in the world?",
+                            UserId = "5"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

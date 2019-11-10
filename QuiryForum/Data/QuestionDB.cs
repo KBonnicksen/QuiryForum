@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using QuiryForum.Models;
 using System;
 using System.Collections.Generic;
@@ -65,6 +66,7 @@ namespace QuiryForum.Data
         public static async Task<Question> GetQuestionByID(int id, QuiryContext context)
         {   
             Question q = await (context.Questions.Where(m => m.PostID == id)).SingleOrDefaultAsync();
+            //q.User = AspNetUserManager.
             return q;
         }
 
