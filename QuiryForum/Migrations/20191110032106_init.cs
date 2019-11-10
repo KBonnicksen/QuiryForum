@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuiryForum.Migrations
 {
-    public partial class initalize : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,6 +27,7 @@ namespace QuiryForum.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
@@ -39,7 +40,6 @@ namespace QuiryForum.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: false),
                     Email = table.Column<string>(maxLength: 256, nullable: false),
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: true),
@@ -257,11 +257,11 @@ namespace QuiryForum.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateOfBirth", "Description", "Email", "EmailConfirmed", "FirstName", "IsPrivate", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "063d2614-6ee2-4f49-bef2-431eb2917d98", new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "troiboi@gmail.com", true, "Troi", false, null, false, null, null, null, null, null, false, null, false, "TroiBoi" },
-                    { "2", 0, "9a4b145c-0487-494b-9785-39271fa7fffe", new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "kanye@kanye.com", true, "Kanye", false, null, false, null, null, null, null, null, false, null, false, "KanyeWest" },
-                    { "3", 0, "dc2f5865-b055-49e1-a121-aecbf107cd37", new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "lazyboys@catsRule.com", true, "Taco", false, null, false, null, null, null, null, null, false, null, false, "TacoRafa" },
-                    { "4", 0, "d97168db-fe83-4811-8b4e-851bb95c11f6", new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "illy@bass.com", true, "Lenny", false, null, false, null, null, null, null, null, false, null, false, "Illenium" },
-                    { "5", 0, "c16eeca6-6203-4d50-9743-c62369baa850", new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "NightNight@gmail.com", true, "Mare", false, null, false, null, null, null, null, null, false, null, false, "Nightmare" }
+                    { "1", 0, "e08930c7-ddb5-4a5f-85bd-23286c914f5a", new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "troiboi@gmail.com", true, "Troi", false, null, false, null, null, null, null, null, false, null, false, "TroiBoi" },
+                    { "2", 0, "ca237de3-8073-4d56-beea-9cabf9c6701f", new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "kanye@kanye.com", true, "Kanye", false, null, false, null, null, null, null, null, false, null, false, "KanyeWest" },
+                    { "3", 0, "bb8551db-f253-40ca-a5d6-a1c5364140a9", new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "lazyboys@catsRule.com", true, "Taco", false, null, false, null, null, null, null, null, false, null, false, "TacoRafa" },
+                    { "4", 0, "538dae5a-bf0b-41a8-8b89-b8d7813d6e1e", new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "illy@bass.com", true, "Lenny", false, null, false, null, null, null, null, null, false, null, false, "Illenium" },
+                    { "5", 0, "0f466d55-4be1-4b2e-9abc-cdf93f354556", new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "NightNight@gmail.com", true, "Mare", false, null, false, null, null, null, null, null, false, null, false, "Nightmare" }
                 });
 
             migrationBuilder.InsertData(
@@ -279,6 +279,24 @@ namespace QuiryForum.Migrations
                     { 8, "Electronics" },
                     { 9, "Family & Relationships" },
                     { 10, "Business" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Questions",
+                columns: new[] { "PostID", "CategoryID", "Content", "Title", "UserId" },
+                values: new object[,]
+                {
+                    { 1, 1, null, "When U go to restaurants will they start charging u service charge & plus tip ?", "1" },
+                    { 7, 1, "I need answers.", "Why havent we landed on the sun?", "2" },
+                    { 8, 2, "What you find tastiest - fish, salmon, shrimps, shellfish, chicken, turkey, pork, bacon, sausage, beef???", "What is the tastiest meat according to you?", "3" },
+                    { 2, 3, null, "Why does McDonald's taste so bad?", "2" },
+                    { 4, 3, "They look the same", "What is the difference between subway and quiznos?", "4" },
+                    { 3, 4, "She gave me the wrong change", "Why couldn't she give me different change? was she dumb?", "3" },
+                    { 9, 6, null, "If you vote Democrat, are you telling the world you are pro-communist?", "4" },
+                    { 10, 7, null, "My kid's school want to take them on a field trip to a windmill farm, but what about windmill cancer?", "5" },
+                    { 5, 8, "Since it discriminates on the basis of race.", "Isn’t affirmative action a violation of the civil rights act?", "5" },
+                    { 6, 9, "Seriously, if you want to get a job that pays above minimum wage, get some job training like medical assisting or dental assisting.", "Why do people want to raise the minimum wage?", "1" },
+                    { 11, 9, "What is the most endangered island in the world?", "What is the most endangered island in the world?", "5" }
                 });
 
             migrationBuilder.CreateIndex(

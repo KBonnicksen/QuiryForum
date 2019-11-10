@@ -9,8 +9,6 @@ namespace QuiryForum.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        [Required]
-        public override string UserName { get; set; }
         /// <summary>
         /// The unique email associated with this account
         /// </summary>
@@ -50,6 +48,8 @@ namespace QuiryForum.Models
         /// Default value is false.
         /// </summary>
         public bool IsPrivate { get; set; }
+
+        public ICollection<Question> UserQuestions { get; set; }
 
         /// <summary>
         /// List of users following this account.

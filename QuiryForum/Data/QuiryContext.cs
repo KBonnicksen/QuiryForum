@@ -23,9 +23,8 @@ namespace QuiryForum.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
 
-        protected async override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //_userManager = new UserManager<ApplicationUser>();
             base.OnModelCreating(modelBuilder);
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
@@ -56,9 +55,9 @@ namespace QuiryForum.Data
                 .Property(p => p.PostID)
                 .ValueGeneratedOnAdd();
 
-            /*modelBuilder.Entity<Question>()
-                .HasOne(u => u.ApplicationUser)
-                .WithMany(a => a.Questions);*/
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(u => u.UserQuestions)
+                .WithOne(a => a.User);
         }
 
         private void SeedQuestions(ModelBuilder modelBuilder)

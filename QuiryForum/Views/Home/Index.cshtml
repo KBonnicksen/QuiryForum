@@ -9,7 +9,6 @@
     }
 
 }
-
 <div class="row">
     <div class="col-8" id="main-content">
         <h1>@ViewData["CategoryTitle"]</h1>
@@ -17,14 +16,13 @@
         <div class="row" style="height:800px">
             @foreach (Question q in Model)
             {
-                //ApplicationUser poster = await UserDB.GetUserByID(q.UserId);
                 <div class="card w-100">
                     <div class="card-body">
                         <h5 class="card-title">@Html.DisplayFor(m => q.Title)</h5>
                         <p class="card-text">@Html.DisplayFor(m => q.Content)</p>
-                        <!--<p class="card-text">poster.UserName</p>-->
+                        <p class="card-text">@Html.DisplayFor(m => q.User.UserName)</p>
                         <p class="card-text">@Html.DisplayFor(m => q.PostingDate)</p>
-                        <a class="stretched-link" asp-action="ViewQuestion" asp-controller="Posts">
+                        <a class="stretched-link" asp-action="ViewQuestion" asp-controller="Posts" asp-route-id="@q.PostID">
                         </a>
                     </div>
                 </div>
