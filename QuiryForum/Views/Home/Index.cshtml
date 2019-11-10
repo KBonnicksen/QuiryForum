@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Question>
+﻿@model QuiryForum.Models.ViewModels.HomePageVM
 @using QuiryForum.Data;
 
 @{
@@ -14,7 +14,7 @@
         <h1>@ViewData["CategoryTitle"]</h1>
         <hr />
         <div class="row" style="height:800px">
-            @foreach (Question q in Model)
+            @foreach (Question q in Model.questions)
             {
                 <div class="card w-100">
                     <div class="card-body">
@@ -22,19 +22,29 @@
                         <p class="card-text">@Html.DisplayFor(m => q.Content)</p>
                         <p class="card-text">@Html.DisplayFor(m => q.User.UserName)</p>
                         <p class="card-text">@Html.DisplayFor(m => q.PostingDate)</p>
-                        <a class="stretched-link" asp-action="ViewQuestion" asp-controller="Posts" asp-route-id="@q.PostID">
-                        </a>
+                        <a class="stretched-link" asp-action="ViewQuestion" asp-controller="Posts" asp-route-id="@q.PostID"></a>
                     </div>
                 </div>
             }
         </div>
     </div>
 
-    <div class="col-4">
-        <div class="row" id="question-box" style="border:dashed green .2em; height:350px">
-            <p>Box that prompts user to ask a question</p>
-            <input type="button" class="btn btn-info" value="Ask a question!" onclick="location.href='@Url.Action("Ask", "Posts")'" />
-
+    <div class="col">
+        <div class="row bg-light rounded-pill" id="question-box" style="height:350px">
+            <div class="col">
+                <div class="row text-center">
+                    <p>Ask a question!</p>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <input asp-for="q.Title" class="form-control h" />
+                        <span asp-validation-for="q.Title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <input type="button" class="btn btn-info" value="Ask!" onclick="location.href='@Url.Action("Ask", "Posts")'" />
+                </div>
+            </div>
         </div>
 
         <div class="row" id="category-container" style="border:dashed purple .2em; height:500px">
