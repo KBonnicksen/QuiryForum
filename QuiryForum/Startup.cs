@@ -39,7 +39,7 @@ namespace QuiryForum
             services.AddDbContext<QuiryContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<ApplicationUser>(options => 
+            services.AddIdentityCore<ApplicationUser>(options => 
             {
                 // Set password options
                 options.Password.RequiredLength = 8;
