@@ -35,11 +35,13 @@ namespace QuiryForum
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            //Working on bug, may not need
+            services.AddScoped<SignInManager<ApplicationUser>, SignInManager<ApplicationUser>>();
 
             services.AddDbContext<QuiryContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentityCore<ApplicationUser>(options => 
+            services.AddDefaultIdentity<ApplicationUser>(options => 
             {
                 // Set password options
                 options.Password.RequiredLength = 8;
