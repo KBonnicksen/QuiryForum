@@ -19,6 +19,7 @@ namespace QuiryForum.Data
         }
 
         public DbSet<Category> Categories { get; set; }
+        //public DbSet<ApplicationUser> MyUsers { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
 
@@ -53,10 +54,10 @@ namespace QuiryForum.Data
             modelBuilder.Entity<Question>()
                 .Property(p => p.PostID)
                 .ValueGeneratedOnAdd();
-
+            /*
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany(u => u.UserQuestions)
-                .WithOne(a => a.User);
+                .WithOne(a => a.User);*/
 
             modelBuilder.Entity<ApplicationUser>(b =>
             {
@@ -83,6 +84,20 @@ namespace QuiryForum.Data
                     .WithOne()
                     .HasForeignKey(ur => ur.UserId)
                     .IsRequired();
+
+                b.HasMany(e => e.Answers)
+                    .WithOne()
+                    .HasForeignKey(a => a.UserId)
+                    .IsRequired();
+
+                // Each User can have many questions
+                b.HasMany(e => e.Questions)
+                    .WithOne()
+                    .HasForeignKey(q => q.UserId)
+                    .IsRequired();
+
+                // Each User can have many answers
+                
             });
         }
 

@@ -9,6 +9,7 @@ namespace QuiryForum.Models
 {
     public class ApplicationUser : IdentityUser
     {
+      
         /// <summary>
         /// The unique email associated with this account
         /// </summary>
@@ -51,7 +52,7 @@ namespace QuiryForum.Models
         /// </summary>
         public bool IsPrivate { get; set; }
 
-        public ICollection<Question> UserQuestions { get; set; }
+        //public ICollection<Question> UserQuestions { get; set; }
 
         /// <summary>
         /// List of users following this account.
@@ -63,7 +64,8 @@ namespace QuiryForum.Models
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
         public virtual ICollection<IdentityUserToken<string>> Tokens { get; set; }
         public virtual ICollection<IdentityUserRole<string>> UserRoles { get; set; }
-
+        public virtual ICollection<Question> Questions { get; set; }
+        public virtual ICollection<Answer> Answers { get; set; }
     }
 
     public class ApplicationUserRole : IdentityRole

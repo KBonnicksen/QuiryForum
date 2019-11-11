@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <h5 class="card-title">@Html.DisplayFor(m => q.Title)</h5>
                         <p class="card-text">@Html.DisplayFor(m => q.Content)</p>
-                        <p class="card-text">@Html.DisplayFor(m => q.User.UserName)</p>
+                        <p class="card-text">@Html.DisplayFor(m => q.PostedBy)</p>
                         <p class="card-text">@Html.DisplayFor(m => q.PostingDate)</p>
                         <a class="stretched-link" asp-action="ViewQuestion" asp-controller="Posts" asp-route-id="@q.PostID"></a>
                     </div>
