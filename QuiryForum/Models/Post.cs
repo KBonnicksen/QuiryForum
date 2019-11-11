@@ -25,13 +25,17 @@ namespace QuiryForum.Models
         public int PostID { get; set; }
 
         //The ID of the Creator of the post
-        [ForeignKey("User")]
         public string UserId { get; set; }
+
+        /// <summary>
+        /// The username of the post poster
+        /// </summary>
+        public string PostedBy { get; set; }
 
         /// <summary>
         /// The account that created the post.
         /// </summary>
-        public virtual ApplicationUser User { get; set; }
+        public ApplicationUser User { get; set; }
 
         /// <summary>
         /// Represents the date the post was created.
@@ -43,6 +47,14 @@ namespace QuiryForum.Models
         /// questions. Content is mandatory for answers.
         /// </summary>
         public string Content { get; set; }
+
+        public void AddUser(ApplicationUser user)
+        {
+            UserId = user.Id;
+            PostedBy = user.UserName;
+            // Useless right now
+            User = user;
+        }
     }
 
     /// <summary>

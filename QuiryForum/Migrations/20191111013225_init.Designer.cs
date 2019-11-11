@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuiryForum.Data;
 
 namespace QuiryForum.Migrations
 {
     [DbContext(typeof(QuiryContext))]
-    partial class QuiryContextModelSnapshot : ModelSnapshot
+    [Migration("20191111013225_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,22 +137,15 @@ namespace QuiryForum.Migrations
 
                     b.Property<int>("Likes");
 
-                    b.Property<string>("PostedBy");
-
                     b.Property<int?>("QuestionPostID");
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
-
-                    b.Property<string>("UserId1");
+                    b.Property<string>("UserId");
 
                     b.HasKey("PostID");
 
                     b.HasIndex("QuestionPostID");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Answers");
                 });
@@ -222,7 +217,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3a0cfdac-8edd-4296-b444-578d1b16ce2e",
+                            ConcurrencyStamp = "fe6d9c4b-3065-4fb2-ae06-327563646250",
                             DateOfBirth = new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "troiboi@gmail.com",
                             EmailConfirmed = true,
@@ -237,7 +232,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f5b2ad67-16b6-40ae-b1f5-cb9c81c6ec75",
+                            ConcurrencyStamp = "2589918b-2244-4332-850d-bf362654a016",
                             DateOfBirth = new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kanye@kanye.com",
                             EmailConfirmed = true,
@@ -252,7 +247,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c6f5722e-e550-43cb-8694-d6b8df2961ff",
+                            ConcurrencyStamp = "a095e5fb-a330-40e4-96f9-23b331ced504",
                             DateOfBirth = new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "lazyboys@catsRule.com",
                             EmailConfirmed = true,
@@ -267,7 +262,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3168b55b-7b8e-4390-8d9c-d5936ca8a147",
+                            ConcurrencyStamp = "b18fd992-147d-489d-bfa9-dd17fbf7be20",
                             DateOfBirth = new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "illy@bass.com",
                             EmailConfirmed = true,
@@ -282,7 +277,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0b94c509-3f7e-4c1a-90e9-6dc22ae45d0a",
+                            ConcurrencyStamp = "d584b366-1954-4d4a-b725-0907e4d81ce4",
                             DateOfBirth = new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "NightNight@gmail.com",
                             EmailConfirmed = true,
@@ -398,24 +393,17 @@ namespace QuiryForum.Migrations
 
                     b.Property<string>("Content");
 
-                    b.Property<string>("PostedBy");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(300);
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
-
-                    b.Property<string>("UserId1");
+                    b.Property<string>("UserId");
 
                     b.HasKey("PostID");
 
                     b.HasIndex("CategoryID");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Questions");
 
@@ -571,14 +559,10 @@ namespace QuiryForum.Migrations
                         .HasForeignKey("QuestionPostID")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("QuiryForum.Models.ApplicationUser")
-                        .WithMany("Answers")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("QuiryForum.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("QuiryForum.Models.Question", b =>
@@ -588,14 +572,10 @@ namespace QuiryForum.Migrations
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("QuiryForum.Models.ApplicationUser")
-                        .WithMany("Questions")
+                    b.HasOne("QuiryForum.Models.ApplicationUser", "User")
+                        .WithMany("UserQuestions")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("QuiryForum.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1");
                 });
 #pragma warning restore 612, 618
         }
