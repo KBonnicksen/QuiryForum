@@ -11,7 +11,7 @@ using QuiryForum.Models;
 namespace QuiryForum.Data
 {
 
-    public class QuiryContext : IdentityDbContext<ApplicationUser>
+    public class QuiryContext : IdentityDbContext<ApplicationUser, ApplicationUserRole, string>
     {
         public QuiryContext(DbContextOptions<QuiryContext> options)
             : base(options)
@@ -57,6 +57,33 @@ namespace QuiryForum.Data
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany(u => u.UserQuestions)
                 .WithOne(a => a.User);
+
+            modelBuilder.Entity<ApplicationUser>(b =>
+            {
+                // Each User can have many UserClaims
+                b.HasMany(e => e.Claims)
+                    .WithOne()
+                    .HasForeignKey(uc => uc.UserId)
+                    .IsRequired();
+
+                // Each User can have many UserLogins
+                b.HasMany(e => e.Logins)
+                    .WithOne()
+                    .HasForeignKey(ul => ul.UserId)
+                    .IsRequired();
+
+                // Each User can have many UserTokens
+                b.HasMany(e => e.Tokens)
+                    .WithOne()
+                    .HasForeignKey(ut => ut.UserId)
+                    .IsRequired();
+
+                // Each User can have many entries in the UserRole join table
+                b.HasMany(e => e.UserRoles)
+                    .WithOne()
+                    .HasForeignKey(ur => ur.UserId)
+                    .IsRequired();
+            });
         }
 
         private void SeedQuestions(ModelBuilder modelBuilder)

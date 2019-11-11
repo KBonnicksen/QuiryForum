@@ -15,7 +15,8 @@ namespace QuiryForum.Migrations
                     Id = table.Column<string>(nullable: false),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true)
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -257,11 +258,11 @@ namespace QuiryForum.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateOfBirth", "Description", "Email", "EmailConfirmed", "FirstName", "IsPrivate", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "27186b3c-e096-46b3-b11f-2b72179334fe", new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "troiboi@gmail.com", true, "Troi", false, null, false, null, null, null, null, null, false, null, false, "TroiBoi" },
-                    { "2", 0, "51e13a8a-278b-4218-a262-5d5642d4ad84", new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "kanye@kanye.com", true, "Kanye", false, null, false, null, null, null, null, null, false, null, false, "KanyeWest" },
-                    { "3", 0, "1dbbc170-0c0d-496f-8353-c826d5fa6f05", new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "lazyboys@catsRule.com", true, "Taco", false, null, false, null, null, null, null, null, false, null, false, "TacoRafa" },
-                    { "4", 0, "f554cd13-012c-4519-b374-cc0294986245", new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "illy@bass.com", true, "Lenny", false, null, false, null, null, null, null, null, false, null, false, "Illenium" },
-                    { "5", 0, "b86f0d86-900b-43e5-8e47-d44cf7b24efc", new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "NightNight@gmail.com", true, "Mare", false, null, false, null, null, null, null, null, false, null, false, "Nightmare" }
+                    { "1", 0, "fe6d9c4b-3065-4fb2-ae06-327563646250", new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "troiboi@gmail.com", true, "Troi", false, null, false, null, null, null, null, null, false, null, false, "TroiBoi" },
+                    { "2", 0, "2589918b-2244-4332-850d-bf362654a016", new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "kanye@kanye.com", true, "Kanye", false, null, false, null, null, null, null, null, false, null, false, "KanyeWest" },
+                    { "3", 0, "a095e5fb-a330-40e4-96f9-23b331ced504", new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "lazyboys@catsRule.com", true, "Taco", false, null, false, null, null, null, null, null, false, null, false, "TacoRafa" },
+                    { "4", 0, "b18fd992-147d-489d-bfa9-dd17fbf7be20", new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "illy@bass.com", true, "Lenny", false, null, false, null, null, null, null, null, false, null, false, "Illenium" },
+                    { "5", 0, "d584b366-1954-4d4a-b725-0907e4d81ce4", new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "NightNight@gmail.com", true, "Mare", false, null, false, null, null, null, null, null, false, null, false, "Nightmare" }
                 });
 
             migrationBuilder.InsertData(

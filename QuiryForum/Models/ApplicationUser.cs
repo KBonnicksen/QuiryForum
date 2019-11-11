@@ -14,6 +14,8 @@ namespace QuiryForum.Models
         /// </summary>
         [Required]
         [DataType(DataType.EmailAddress)]
+
+
         public override string Email { get; set; }
 
         /// <summary>
@@ -57,5 +59,15 @@ namespace QuiryForum.Models
         public virtual ICollection<AccountFollowers> Followers { get; set; }
 
         public virtual ICollection<AccountFollowers> Following { get; set; }
+        public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
+        public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+        public virtual ICollection<IdentityUserToken<string>> Tokens { get; set; }
+        public virtual ICollection<IdentityUserRole<string>> UserRoles { get; set; }
+
+    }
+
+    public class ApplicationUserRole : IdentityRole
+    {
+        public String Description { get; set; }
     }
 }
