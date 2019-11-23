@@ -64,6 +64,7 @@ namespace QuiryForum.Data
         public static async Task<List<Answer>> GetAnswersToQuestion(int questionID, QuiryContext context)
         {
             List<Answer> answers = await context.Answers
+                                                .Where(a => a.QuestionID == questionID)
                                                  .OrderBy(a => a.PostingDate)
                                                  .ToListAsync();
             return answers;
