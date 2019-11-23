@@ -3,13 +3,22 @@
 
 @{
     ViewData["Title"] = "ViewQuestion";
+    
 }
 <h3></h3>
 <div>
+    @*@if (ViewData["ErrorMsg"] != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            <div class="alert alert-warning" role="alert">
+                @ViewData["ErrorMsg"]
+            </div>
+        </div>
+    }*@
     <div class="row" id="single-question">
         <div class="card w-100">
             <div class="card-body">
-               
+
                 <h5 class="card-title">@Html.DisplayFor(m => m.Question.Title)</h5>
                 <p class="card-text">@Html.DisplayFor(m => m.Question.Content)</p>
                 <p class="card-text">@Html.DisplayFor(m => m.Question.PostedBy)</p>
@@ -22,7 +31,7 @@
         <h3>Display the number of replies</h3>
         <hr />
         @foreach (Answer a in Model.Answers)
-{
+        {
             <div class="card w-100">
                 <div class="card-body">
                     <h5 class="card-title">@Html.DisplayFor(m => a.PostingDate)</h5>
@@ -32,7 +41,7 @@
                     <p class="card-text">@Html.DisplayFor(m => a.PostingDate)</p>
                 </div>
             </div>
-}
+        }
     </div>
 
     <div class="row" id="answer-box">
