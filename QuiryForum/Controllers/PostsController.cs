@@ -73,15 +73,18 @@ namespace QuiryForum.Controllers
         [HttpPost]
         public async Task<IActionResult> ViewQuestion(ViewQuestionVM qAndA)
         {
+            Answer a = qAndA.NewAnswer;
             if (ModelState.IsValid)
             {
-                Answer a = qAndA.NewAnswer;
                 ApplicationUser user = await userManager.GetUserAsync(HttpContext.User);
                 a.AddUser(user);
                 await AnswerDB.AddAsync(a, context);
-                return View(a.QuestionID);
             }
-            return View(qAndA.Question.QuestionID);
+            else
+            {
+                ViewData["ErrorMsg"] = "Sorry! we couldn't post your reply :( Maybe you didn't enter anything?";
+            }
+            return RedirectToAction("ViewQuestion", new { id = a.QuestionID });
         }
 
         /// <summary>
