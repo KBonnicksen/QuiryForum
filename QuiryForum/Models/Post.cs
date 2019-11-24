@@ -21,9 +21,6 @@ namespace QuiryForum.Models
             postingDate = DateTime.Now;
         }
 
-        [Key]
-        public int PostID { get; set; }
-
         //The ID of the Creator of the post
         public string UserId { get; set; }
 
@@ -35,7 +32,7 @@ namespace QuiryForum.Models
         /// <summary>
         /// The account that created the post.
         /// </summary>
-        public ApplicationUser User { get; set; }
+        //public ApplicationUser User { get; set; }
 
         /// <summary>
         /// Represents the date the post was created.
@@ -52,8 +49,6 @@ namespace QuiryForum.Models
         {
             UserId = user.Id;
             PostedBy = user.UserName;
-            // Useless right now
-            User = user;
         }
     }
 
@@ -67,6 +62,9 @@ namespace QuiryForum.Models
             Answers = new List<Answer>();
         }
 
+        [Key]
+        public int QuestionID { get; set; }
+
         [Required]
         [StringLength(300)]
         /// <summary>
@@ -77,7 +75,7 @@ namespace QuiryForum.Models
         /// <summary>
         /// A list of all of the answers users have posted for this question
         /// </summary>
-        public List<Answer> Answers { get; set; }
+        public virtual ICollection<Answer> Answers { get; set; }
 
         /// <summary>
         /// The category that the user has chosen for the question.
@@ -98,10 +96,15 @@ namespace QuiryForum.Models
             Dislikes = 0;
         }
 
+        public int QuestionID { get; set; }
+
+        [Key]
+        public int AnswerID { get; set; }
+
         /// <summary>
         /// The question that this answer is answering.
         /// </summary>
-        public Question Question { get; set; }
+        //public Question Question { get; set; }
 
         /// <summary>
         /// The amount of likes for the given answer.
@@ -114,6 +117,6 @@ namespace QuiryForum.Models
         public int Dislikes { get; set; }
 
         [Required]
-        public new string Content { get; set; }
+        public new virtual string Content { get; set; }
     }
 }

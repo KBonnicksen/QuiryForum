@@ -46,8 +46,7 @@ namespace QuiryForum.Controllers
                 Question q = vm.q;
                 ApplicationUser user = await userManager.GetUserAsync(HttpContext.User);
                 q.Category = await CategoryDB.GetCategoryByID(q.CategoryID, context);
-                //String username = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                q.User = user;
+                q.AddUser(user);
                 await QuestionDB.AddAsync(q, context);
 
                 return RedirectToAction("Index");

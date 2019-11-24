@@ -49,7 +49,7 @@ namespace QuiryForum.Data
         {
             Answer answer = new Answer()
             {
-                PostID = ID
+                AnswerID = ID
             };
             context.Entry(answer).State = EntityState.Deleted;
             await context.SaveChangesAsync();
@@ -61,9 +61,10 @@ namespace QuiryForum.Data
         /// <param name="questionID"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static async Task<List<Answer>> GetAnswersTo(int questionID, QuiryContext context)
+        public static async Task<List<Answer>> GetAnswersToQuestion(int questionID, QuiryContext context)
         {
             List<Answer> answers = await context.Answers
+                                                .Where(a => a.QuestionID == questionID)
                                                  .OrderBy(a => a.PostingDate)
                                                  .ToListAsync();
             return answers;

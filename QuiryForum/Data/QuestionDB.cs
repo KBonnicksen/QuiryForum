@@ -31,7 +31,7 @@ namespace QuiryForum.Data
         {
             Question q = new Question()
             {
-                PostID = ID
+                QuestionID = ID
             };
             context.Entry(q).State = EntityState.Deleted;
             await context.SaveChangesAsync();
@@ -65,7 +65,7 @@ namespace QuiryForum.Data
         /// <returns></returns>
         public static async Task<Question> GetQuestionByID(int id, QuiryContext context)
         {   
-            Question q = await (context.Questions.Where(m => m.PostID == id)).SingleOrDefaultAsync();
+            Question q = await (context.Questions.Where(m => m.QuestionID == id)).SingleOrDefaultAsync();
             //q.User = AspNetUserManager.
             return q;
         }

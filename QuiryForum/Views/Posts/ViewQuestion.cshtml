@@ -1,20 +1,62 @@
-﻿@model QuiryForum.Models.Question
+﻿@model QuiryForum.Models.ViewModels.ViewQuestionVM
 @using QuiryForum.Data
 
 @{
     ViewData["Title"] = "ViewQuestion";
+    
 }
 <h3></h3>
 <div>
-    <div class="row">
-        <div class="card w-100">
-            <div class="card-body">
-                <h5 class="card-title">@Html.DisplayFor(q => q.Title)</h5>
-                <p class="card-text">@Html.DisplayFor(q => q.Content)</p>
-                <p class="card-text">@Html.DisplayFor(q => q.PostedBy)</p>
-                <p class="card-text">@Html.DisplayFor(q => q.PostingDate)</p>
-                </a>
+    @*@if (ViewData["ErrorMsg"] != null)
+    {
+        <div class="alert alert-warning" role="alert">
+            <div class="alert alert-warning" role="alert">
+                @ViewData["ErrorMsg"]
             </div>
         </div>
+    }*@
+    <div class="row" id="single-question">
+        <div class="card w-100">
+            <div class="card-body">
+
+                <h5 class="card-title">@Html.DisplayFor(m => m.Question.Title)</h5>
+                <p class="card-text">@Html.DisplayFor(m => m.Question.Content)</p>
+                <p class="card-text">@Html.DisplayFor(m => m.Question.PostedBy)</p>
+                <p class="card-text">@Html.DisplayFor(m => m.Question.PostingDate)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="replies">
+        <h3>Display the number of replies</h3>
+        <hr />
+        @foreach (Answer a in Model.Answers)
+        {
+            <div class="card w-100">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(m => a.PostingDate)</h5>
+                    <p class="card-text">@Html.DisplayFor(m => a.Content)</p>
+                    <p class="card-text">@Html.DisplayFor(m => a.Likes)</p>
+                    <p class="card-text">@Html.DisplayFor(m => a.Dislikes)</p>
+                    <p class="card-text">@Html.DisplayFor(m => a.PostingDate)</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row" id="answer-box">
+        <form asp-action="ViewQuestion">
+
+            <div class="form-group">
+                <label asp-for="NewAnswer.Content" class="control-label">Reply</label>
+                <input asp-for="NewAnswer.Content" class="form-control" />
+                <span asp-validation-for="NewAnswer" class="text-danger"></span>
+            </div>
+            @Html.HiddenFor(m => m.NewAnswer.QuestionID, new { Value = Model.Question.QuestionID })
+
+            <div class="form-group">
+                <input type="submit" value="Answer" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
 </div>
