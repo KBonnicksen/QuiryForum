@@ -25,12 +25,12 @@ namespace QuiryForum.Controllers
         public async Task<IActionResult> Index(int? id)
         {
             HomePageVM vm = new HomePageVM();
-            int ID = id ?? -1;
-            if (ID != -1)
+            //int ID = id ?? -1;
+            if (id != null)
             {
-                Category c = await CategoryDB.GetCategoryByID(ID, context);
+                Category c = await CategoryDB.GetCategoryByID((int)id, context);
                 
-                vm.questions = await QuestionDB.GetQuestionsByCategory(ID, context);
+                vm.questions = await QuestionDB.GetQuestionsByCategory((int)id, context);
                 ViewData["CategoryTitle"] = c.CategoryName;
                 return View(vm);
             }
