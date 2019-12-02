@@ -13,12 +13,10 @@ namespace QuiryForum.Models
     /// </summary>
     public class Post
     {
-        private DateTime postingDate;
 
         public Post()
         {
             // Set the Account to the account logged in
-            postingDate = DateTime.Now;
         }
 
         //The ID of the Creator of the post
@@ -37,7 +35,7 @@ namespace QuiryForum.Models
         /// <summary>
         /// Represents the date the post was created.
         /// </summary>
-        public DateTime PostingDate { get => postingDate; }
+        public DateTime PostingDate { get; set; }
 
         /// <summary>
         /// The main content of the post. This is optional for 
@@ -49,6 +47,53 @@ namespace QuiryForum.Models
         {
             UserId = user.Id;
             PostedBy = user.UserName;
+        }
+
+        public string FormattedDate()
+        {
+            DateTime now = DateTime.Now;
+            if (PostingDate > now.AddHours(-1)) //within the last hour
+            {
+                int minutesAgo = Convert.ToInt32((now - PostingDate).TotalMinutes);
+                return minutesAgo + " minutes ago";
+            }
+            if (PostingDate > now.AddHours(-24)) //within the last 24 hours
+            {
+                int hoursAgo = Convert.ToInt32((now - PostingDate).TotalHours);
+                return hoursAgo + " hours ago";
+            }
+            else if (PostingDate > now.AddDays(-7)) //within the last week
+            {
+                int daysAgo = Convert.ToInt32((now - PostingDate).TotalDays);
+                if(daysAgo > 1)
+                    return daysAgo + " days ago";
+
+                return "yesterday";
+            }
+            else if (PostingDate > now.AddMonths(-1)) //within the last month
+            {
+                int weeksAgo = Convert.ToInt32((now - PostingDate).TotalDays / 4);
+                if(weeksAgo > 1)
+                    return weeksAgo + " weeks ago";
+
+                return "1 week ago";
+            }
+            else if (PostingDate > now.AddYears(-1)) //within the last year
+            {
+                int monthsAgo = Convert.ToInt32((now - PostingDate).TotalDays / 30);
+                if (monthsAgo > 1)
+                    return monthsAgo + " months ago";
+
+                return "1 month ago";
+            }
+            else
+            {
+                int yearsAgo = Convert.ToInt32((now - PostingDate).TotalDays / 365);
+                if (yearsAgo > 1)
+                    return yearsAgo + " years ago";
+                
+                return "over 1 year ago";
+            }
         }
     }
 

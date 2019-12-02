@@ -25,6 +25,7 @@ namespace QuiryForum.Controllers
         public async Task<IActionResult> Index(int? id)
         {
             HomePageVM vm = new HomePageVM();
+            vm.categories = await CategoryDB.GetAllCategories(context);
             if (id != null)
             {
                 Category c = await CategoryDB.GetCategoryByID((int)id, context);
@@ -33,7 +34,7 @@ namespace QuiryForum.Controllers
                 ViewData["CategoryTitle"] = c.CategoryName;
                 return View(vm);
             }
-            vm.categories = await CategoryDB.GetAllCategories(context);
+            
             vm.questions = await QuestionDB.GetAllQuestions(context);
             return View(vm);
         }
