@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuiryForum.Data;
 
 namespace QuiryForum.Migrations
 {
     [DbContext(typeof(QuiryContext))]
-    partial class QuiryContextModelSnapshot : ModelSnapshot
+    [Migration("20191202033855_uggh")]
+    partial class uggh
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -218,7 +220,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a07ddd3e-a26f-421a-be3a-76feec5101b1",
+                            ConcurrencyStamp = "ce4dd9e9-a5e2-4b9d-a160-3b146e4afeb0",
                             DateOfBirth = new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "troiboi@gmail.com",
                             EmailConfirmed = true,
@@ -233,7 +235,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f012aa65-1b7e-4305-9e13-d761c615828b",
+                            ConcurrencyStamp = "c99d8d01-266c-4dc9-b396-4994b18f15b1",
                             DateOfBirth = new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kanye@kanye.com",
                             EmailConfirmed = true,
@@ -248,7 +250,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3494f6f9-295e-4290-b089-c77264e3e39d",
+                            ConcurrencyStamp = "a49855c6-7929-4148-a588-0169e86ca231",
                             DateOfBirth = new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "lazyboys@catsRule.com",
                             EmailConfirmed = true,
@@ -263,7 +265,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c94c0079-42f7-4982-b002-8a5aa5eba50b",
+                            ConcurrencyStamp = "eb1ed840-2e87-4a47-868c-4f63ecd7096f",
                             DateOfBirth = new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "illy@bass.com",
                             EmailConfirmed = true,
@@ -278,7 +280,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dabb8245-368b-4bd2-9ba4-627607f6443c",
+                            ConcurrencyStamp = "b44cc59e-5e29-4e3d-a6fe-034b67f9e2bd",
                             DateOfBirth = new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "NightNight@gmail.com",
                             EmailConfirmed = true,
@@ -339,62 +341,52 @@ namespace QuiryForum.Migrations
                         new
                         {
                             CategoryID = 1,
-                            CategoryName = "Travel",
-                            Icon = "fas fa-globe-americas"
+                            CategoryName = "Travel"
                         },
                         new
                         {
                             CategoryID = 2,
-                            CategoryName = "Sports",
-                            Icon = "fas fa-volleyball-ball"
+                            CategoryName = "Sports"
                         },
                         new
                         {
                             CategoryID = 3,
-                            CategoryName = "Health",
-                            Icon = "fas fa-briefcase-medical"
+                            CategoryName = "Health"
                         },
                         new
                         {
                             CategoryID = 4,
-                            CategoryName = "Pets",
-                            Icon = "fas fa-paw"
+                            CategoryName = "Pets"
                         },
                         new
                         {
                             CategoryID = 5,
-                            CategoryName = "Entertainment",
-                            Icon = "fas fa-star"
+                            CategoryName = "Entertainment"
                         },
                         new
                         {
                             CategoryID = 6,
-                            CategoryName = "Food",
-                            Icon = "fas fa-utensils"
+                            CategoryName = "Food"
                         },
                         new
                         {
                             CategoryID = 7,
-                            CategoryName = "Environment",
-                            Icon = "fas fa-leaf"
+                            CategoryName = "Environment"
                         },
                         new
                         {
                             CategoryID = 8,
-                            CategoryName = "Electronics",
-                            Icon = "fas fa-robot"
+                            CategoryName = "Electronics"
                         },
                         new
                         {
                             CategoryID = 9,
-                            CategoryName = "Family & Relationships",
-                            Icon = "fas fa-heart"
+                            CategoryName = "Family & Relationships"
                         },
                         new
                         {
                             CategoryID = 10,
-                            CategoryName = "Business",
-                            Icon = "fas fa-user-tie"
+                            CategoryName = "Business"
                         });
                 });
 
