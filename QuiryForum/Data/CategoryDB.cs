@@ -28,5 +28,11 @@ namespace QuiryForum.Data
             Category c = await GetCategoryByID(id, context);
             return c.ToString();
         }
+
+        public static async Task<string> GetColorByID(int id, QuiryContext context)
+        {
+            Category c = await GetCategoryByID(id, context);
+            return c.Color;
+        }
     }
 }

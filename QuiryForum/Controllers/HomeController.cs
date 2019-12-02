@@ -33,7 +33,8 @@ namespace QuiryForum.Controllers
                 ViewData["CategoryTitle"] = c.CategoryName;
                 return View(vm);
             }
-             vm.questions = await QuestionDB.GetAllQuestions(context);
+            vm.categories = await CategoryDB.GetAllCategories(context);
+            vm.questions = await QuestionDB.GetAllQuestions(context);
             return View(vm);
         }
 

@@ -115,8 +115,7 @@ namespace QuiryForum.Controllers
                 ApplicationUser user = await userManager.GetUserAsync(HttpContext.User);
                 Question q = vm.Question;
                 q.AddUser(user);
-                Category c = await CategoryDB.GetCategoryByID(q.CategoryID, context);
-                q.CategoryName = c.ToString();
+                //Category c = await CategoryDB.GetCategoryByID(q.CategoryID, context);
                 
                 await QuestionDB.AddAsync(q, context);
                 

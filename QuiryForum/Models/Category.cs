@@ -16,5 +16,9 @@ namespace QuiryForum.Models
         /// The name of the individual category.
         /// </summary>
         public string CategoryName { get; set; }
+
+        public string Color { get; set; }
+
+        public string Icon { get; set; }
     }
 }

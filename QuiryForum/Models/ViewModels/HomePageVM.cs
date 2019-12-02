@@ -8,6 +8,8 @@ namespace QuiryForum.Models.ViewModels
     public class HomePageVM
     {
         public IEnumerable<Question> questions { get; set; }
+
+        public List<Category> categories { get; set; }
         public Question q { get; set; }
     }
 }
