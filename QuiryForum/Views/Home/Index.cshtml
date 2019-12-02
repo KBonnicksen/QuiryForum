@@ -17,6 +17,7 @@
         <div class="row" style="height:800px">
             @foreach (Question q in Model.questions)
             {
+                Category c = Model.categories.Find(x => x.CategoryID == q.CategoryID);
                 <div class="card w-100 mb-2">
                     <div class="card-body p-0">
                         <div class="container-fluid">
@@ -31,13 +32,16 @@
                                 </div>
                                 <div class="col">
                                     <div id="question-user-info" class="row pb-4 mt-1">
-                                        <div class="col-1">
-                                            <span class="badge badge-primary">@Html.DisplayFor(m => q.CategoryName)</span>
+                                        <div class="col-auto pr-0">
+                                            <i id="thumbs-up-icon" class="@c.Icon"></i>
                                         </div>
-                                        <div id="username-col"class="col-3 pt-1">
+                                        <div class="col-auto pr-1">
+                                            <span class="badge badge-primary">@c.CategoryName</span>
+                                        </div>
+                                        <div id="username-col" class="col-auto pt-1 pl-0">
                                             <p class="text-muted">Quiry by @Html.DisplayFor(m => q.PostedBy)</p>
                                         </div>
-                                        <div id="post-date-col"class="col pt-1">
+                                        <div id="post-date-col" class="col pt-1">
                                             <p class="text-muted float-right">@Html.DisplayFor(m => q.PostingDate)</p>
                                         </div>
                                     </div>
