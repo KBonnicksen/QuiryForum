@@ -22,6 +22,7 @@ namespace QuiryForum.Data
         /// <returns></returns>
         public static async Task<Question> AddAsync(Question q, QuiryContext context)
         {
+            q.PostingDate = DateTime.Now;
             await context.AddAsync(q);
             await context.SaveChangesAsync();
             return q;
