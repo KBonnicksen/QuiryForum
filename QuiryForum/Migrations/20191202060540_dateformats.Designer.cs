@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuiryForum.Data;
 
 namespace QuiryForum.Migrations
 {
     [DbContext(typeof(QuiryContext))]
-    partial class QuiryContextModelSnapshot : ModelSnapshot
+    [Migration("20191202060540_dateformats")]
+    partial class dateformats
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -220,7 +222,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7a5c33c6-f7c3-47e2-aae7-d1dcdc315ce1",
+                            ConcurrencyStamp = "3bbf725f-2a2b-4ff9-8981-834a9b22930c",
                             DateOfBirth = new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "troiboi@gmail.com",
                             EmailConfirmed = true,
@@ -235,7 +237,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7f61d59a-d909-41a7-abfe-a4393e07ea99",
+                            ConcurrencyStamp = "f4e33d4e-1c87-4211-9c3b-393db22e7062",
                             DateOfBirth = new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kanye@kanye.com",
                             EmailConfirmed = true,
@@ -250,7 +252,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cd0ddc3e-a100-4a96-99b5-0d301a58adfe",
+                            ConcurrencyStamp = "f1458ba4-4f26-413f-816f-f99e2e9ea0f3",
                             DateOfBirth = new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "lazyboys@catsRule.com",
                             EmailConfirmed = true,
@@ -265,7 +267,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "80d18a5b-ba93-4bc3-badd-0841d23671f5",
+                            ConcurrencyStamp = "e1fe7c92-eac5-4255-94a1-772403ec1059",
                             DateOfBirth = new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "illy@bass.com",
                             EmailConfirmed = true,
@@ -280,7 +282,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "124008ba-0bb7-40cf-9850-608356cbeab0",
+                            ConcurrencyStamp = "1374f3e4-2d98-4f51-b34a-c773de7f7e4d",
                             DateOfBirth = new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "NightNight@gmail.com",
                             EmailConfirmed = true,
