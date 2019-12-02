@@ -22,5 +22,11 @@ namespace QuiryForum.Data
             Category c = await (context.Categories.Where(m => m.CategoryID == id)).SingleOrDefaultAsync();
             return c;
         }
+
+        public static async Task<string> GetCategoryNameByID(int id, QuiryContext context)
+        {
+            Category c = await GetCategoryByID(id, context);
+            return c.ToString();
+        }
     }
 }

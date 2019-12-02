@@ -80,7 +80,7 @@ namespace QuiryForum.Models
         /// <summary>
         /// The category that the user has chosen for the question.
         /// </summary>
-        public Category Category { get; set; }
+        public string CategoryName { get; set; }
 
         public int CategoryID { get; set; }
     }
