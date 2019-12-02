@@ -24,32 +24,35 @@
                             <div class="row h-100">
                                 <div id="num-likes-col" class="col-1 m-0">
                                     <div class="row align-items-center h-50">
-                                        <p class="mb-0">455</p>
+                                        <p class="mb-0" style="color:@c.Color">455</p>
                                     </div>
-                                    <div class="row h-50">
+                                    <div class="row h-50" style="color:@c.Color">
                                         <i id="thumbs-up-icon" class="m-auto fas fa-thumbs-up"></i>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div id="question-user-info" class="row pb-4 mt-1">
+                                    <div id="question-user-info" class="row pb-3 mt-1">
                                         <div class="col-auto pr-0">
-                                            <i id="thumbs-up-icon" class="@c.Icon"></i>
+                                            <i id="thumbs-up-icon" class="@c.Icon" style="color:@c.Color"></i>
                                         </div>
                                         <div class="col-auto pr-1">
-                                            <span class="badge badge-primary">@c.CategoryName</span>
+                                            <span style="color:@c.Color">@c.CategoryName</span>
                                         </div>
                                         <div id="username-col" class="col-auto pt-1 pl-0">
                                             <p class="text-muted">Quiry by @Html.DisplayFor(m => q.PostedBy)</p>
                                         </div>
-                                        <div id="post-date-col" class="col pt-1">
-                                            <p class="text-muted float-right">@Html.DisplayFor(m => q.PostingDate)</p>
+                                        <div class="col pt-1">
+                                            <p id="post-date" class="float-right text-muted">@Html.DisplayFor(m => q.PostingDate)</p>
                                         </div>
                                     </div>
-                                    <div id="question-title" class="row">
+                                    <div id="question-title" class="row ml-2 mr-2">
                                         <h5 class="card-title">@Html.DisplayFor(m => q.Title)</h5>
                                     </div>
-                                    <div id="question-content" class="row pb-4">
-                                        <p class="card-text">@Html.DisplayFor(m => q.Content)</p>
+                                    <div id="question-content" class="row pb-3 ml-2 mr-2 text-muted">
+                                        <p class="card-text ml-0">@Html.DisplayFor(m => q.Content)</p>
+                                    </div>
+                                    <div class="row m-0">
+                                        <span id="num-comments" class="text-muted">0 comments</span>
                                     </div>
                                     <a class="stretched-link" asp-action="ViewQuestion" asp-controller="Posts" asp-route-id="@q.QuestionID"></a>
                                 </div>
@@ -91,9 +94,6 @@
     }
     p {
         margin: auto;
-    }
-    #thumbs-up-icon{
-        color:#00ff00;
     }
     #post-date-col, #username-col{
         font-size: .85em;

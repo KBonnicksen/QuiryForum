@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuiryForum.Data;
 
 namespace QuiryForum.Migrations
 {
     [DbContext(typeof(QuiryContext))]
-    partial class QuiryContextModelSnapshot : ModelSnapshot
+    [Migration("20191202041214_categoryColors")]
+    partial class categoryColors
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -218,7 +220,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "13e34529-01e0-448e-a81d-c199efe2b415",
+                            ConcurrencyStamp = "3a2afcf9-cc8b-4c53-8d6b-93aaafdf3bf5",
                             DateOfBirth = new DateTime(1999, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "troiboi@gmail.com",
                             EmailConfirmed = true,
@@ -233,7 +235,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0e7abfde-618e-4230-96b8-3a896633c917",
+                            ConcurrencyStamp = "68c22e30-e37d-4cbd-bfda-32a34365c43c",
                             DateOfBirth = new DateTime(1977, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kanye@kanye.com",
                             EmailConfirmed = true,
@@ -248,7 +250,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "46c0a432-ac93-4102-a7df-3ed4c296a263",
+                            ConcurrencyStamp = "5f0b335d-5ebd-4c0d-ba7f-e95c1d27fafc",
                             DateOfBirth = new DateTime(2015, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "lazyboys@catsRule.com",
                             EmailConfirmed = true,
@@ -263,7 +265,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f8745e49-1457-4e4f-bba8-962dbf299784",
+                            ConcurrencyStamp = "ebfafb9a-e726-4787-84d7-d616be254df1",
                             DateOfBirth = new DateTime(1989, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "illy@bass.com",
                             EmailConfirmed = true,
@@ -278,7 +280,7 @@ namespace QuiryForum.Migrations
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c178cdcc-6a34-40f7-a5ba-26aede8f5013",
+                            ConcurrencyStamp = "e9dc34a0-f1b8-446b-90c1-6ba0de890843",
                             DateOfBirth = new DateTime(1969, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "NightNight@gmail.com",
                             EmailConfirmed = true,
@@ -347,21 +349,21 @@ namespace QuiryForum.Migrations
                         {
                             CategoryID = 2,
                             CategoryName = "Sports",
-                            Color = "#00cc99",
+                            Color = "#33FFBD",
                             Icon = "fas fa-volleyball-ball"
                         },
                         new
                         {
                             CategoryID = 3,
                             CategoryName = "Health",
-                            Color = "#cc0000",
+                            Color = "#F70E03",
                             Icon = "fas fa-briefcase-medical"
                         },
                         new
                         {
                             CategoryID = 4,
                             CategoryName = "Pets",
-                            Color = "#ac7339",
+                            Color = "#673533",
                             Icon = "fas fa-paw"
                         },
                         new

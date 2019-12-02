@@ -126,16 +126,16 @@ namespace QuiryForum.Data
         private static void SeedCategories(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasData(
-                            new { CategoryID = 1, CategoryName = "Travel" , Icon = "fas fa-globe-americas" },
-                            new { CategoryID = 2, CategoryName = "Sports", Icon = "fas fa-volleyball-ball" },
-                            new { CategoryID = 3, CategoryName = "Health", Icon = "fas fa-briefcase-medical" },
-                            new { CategoryID = 4, CategoryName = "Pets", Icon = "fas fa-paw" },
-                            new { CategoryID = 5, CategoryName = "Entertainment", Icon = "fas fa-star" },
-                            new { CategoryID = 6, CategoryName = "Food", Icon = "fas fa-utensils" },
-                            new { CategoryID = 7, CategoryName = "Environment", Icon = "fas fa-leaf" },
-                            new { CategoryID = 8, CategoryName = "Electronics", Icon = "fas fa-robot" },
-                            new { CategoryID = 9, CategoryName = "Family & Relationships", Icon = "fas fa-heart" },
-                            new { CategoryID = 10, CategoryName = "Business", Icon = "fas fa-user-tie" }
+                            new { CategoryID = 1, CategoryName = "Travel" , Icon = "fas fa-globe-americas", Color = "#FF5733" },    //orange
+                            new { CategoryID = 2, CategoryName = "Sports", Icon = "fas fa-volleyball-ball", Color = "#00cc99" },
+                            new { CategoryID = 3, CategoryName = "Health", Icon = "fas fa-briefcase-medical", Color = "#cc0000" }, //red
+                            new { CategoryID = 4, CategoryName = "Pets", Icon = "fas fa-paw", Color = "#ac7339" },                 //brown
+                            new { CategoryID = 5, CategoryName = "Entertainment", Icon = "fas fa-star", Color = "#FFBD33" },
+                            new { CategoryID = 6, CategoryName = "Food", Icon = "fas fa-utensils", Color = "#9635F6" },    //purple
+                            new { CategoryID = 7, CategoryName = "Environment", Icon = "fas fa-leaf", Color = "#75FF33" },    //green
+                            new { CategoryID = 8, CategoryName = "Electronics", Icon = "fas fa-robot", Color = "#595B50" },   //grey
+                            new { CategoryID = 9, CategoryName = "Family & Relationships", Icon = "fas fa-heart", Color = "#900C3F" }, //maroon
+                            new { CategoryID = 10, CategoryName = "Business", Icon = "fas fa-user-tie", Color = "#020202" }            //black
                             );
         }
 
