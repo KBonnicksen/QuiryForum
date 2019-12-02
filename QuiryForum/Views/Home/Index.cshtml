@@ -1,4 +1,5 @@
-﻿@model QuiryForum.Models.ViewModels.HomePageVM
+﻿
+@model QuiryForum.Models.ViewModels.HomePageVM
 @using QuiryForum.Data;
 
 @{
@@ -16,13 +17,40 @@
         <div class="row" style="height:800px">
             @foreach (Question q in Model.questions)
             {
-                <div class="card w-100">
-                    <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(m => q.Title)</h5>
-                        <p class="card-text">@Html.DisplayFor(m => q.Content)</p>
-                        <p class="card-text">@Html.DisplayFor(m => q.PostedBy)</p>
-                        <p class="card-text">@Html.DisplayFor(m => q.PostingDate)</p>
-                        <a class="stretched-link" asp-action="ViewQuestion" asp-controller="Posts" asp-route-id="@q.QuestionID"></a>
+                <div class="card w-100 mb-2">
+                    <div class="card-body p-0">
+                        <div class="container-fluid">
+                            <div class="row h-100">
+                                <div id="num-likes-col" class="col-1 m-0">
+                                    <div class="row align-items-center h-50">
+                                        <p class="mb-0">455</p>
+                                    </div>
+                                    <div class="row h-50">
+                                        <i id="thumbs-up-icon" class="m-auto fas fa-thumbs-up"></i>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div id="question-user-info" class="row pb-4 mt-1">
+                                        <div class="col-1">
+                                            <span class="badge badge-primary">@Html.DisplayFor(m => q.CategoryName)</span>
+                                        </div>
+                                        <div id="username-col"class="col-3 pt-1">
+                                            <p class="text-muted">Quiry by @Html.DisplayFor(m => q.PostedBy)</p>
+                                        </div>
+                                        <div id="post-date-col"class="col pt-1">
+                                            <p class="text-muted float-right">@Html.DisplayFor(m => q.PostingDate)</p>
+                                        </div>
+                                    </div>
+                                    <div id="question-title" class="row">
+                                        <h5 class="card-title">@Html.DisplayFor(m => q.Title)</h5>
+                                    </div>
+                                    <div id="question-content" class="row pb-4">
+                                        <p class="card-text">@Html.DisplayFor(m => q.Content)</p>
+                                    </div>
+                                    <a class="stretched-link" asp-action="ViewQuestion" asp-controller="Posts" asp-route-id="@q.QuestionID"></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             }
@@ -54,7 +82,16 @@
 </div>
 
 <style>
+    #num-likes-col{
+        background-color:#f2f2f2;
+    }
     p {
         margin: auto;
+    }
+    #thumbs-up-icon{
+        color:#00ff00;
+    }
+    #post-date-col, #username-col{
+        font-size: .85em;
     }
 </style>

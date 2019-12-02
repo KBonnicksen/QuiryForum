@@ -25,7 +25,6 @@ namespace QuiryForum.Controllers
         public async Task<IActionResult> Index(int? id)
         {
             HomePageVM vm = new HomePageVM();
-            //int ID = id ?? -1;
             if (id != null)
             {
                 Category c = await CategoryDB.GetCategoryByID((int)id, context);
@@ -45,7 +44,7 @@ namespace QuiryForum.Controllers
             {
                 Question q = vm.q;
                 ApplicationUser user = await userManager.GetUserAsync(HttpContext.User);
-                q.Category = await CategoryDB.GetCategoryByID(q.CategoryID, context);
+                q.CategoryName = await CategoryDB.GetCategoryNameByID(q.CategoryID, context);
                 q.AddUser(user);
                 await QuestionDB.AddAsync(q, context);
 

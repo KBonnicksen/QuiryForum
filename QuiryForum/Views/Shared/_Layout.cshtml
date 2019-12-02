@@ -13,8 +13,10 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+
     </environment>
+    <script src="https://kit.fontawesome.com/7907aed3b1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -25,7 +27,7 @@
         </div>
         <div id="color-ribbon" class="row">
             <div class="container-fluid d-flex">
-                <div id="row-for-brand-and-links"class="row">
+                <div id="row-for-brand-and-links" class="row">
                     <div id="brand-col" class="col">
                         <a id="brand-name" class="text-white" asp-controller="Home" asp-action="Index" asp-route-id="null">uiry</a>
                     </div>
@@ -68,8 +70,8 @@
                 </div>
             </div>
         </div>
-    </header>        
-            
+    </header>
+
     <div class="container">
         <partial name="_CookieConsentPartial" />*
         <main role="main" class="pb-3">
@@ -84,44 +86,54 @@
     </footer>
 
     <style>
-        #row-for-brand-and-links{
+        body{
+            font-family: 'Lato', sans-serif;
+        }
+        #row-for-brand-and-links {
             margin-left: 12.2%;
         }
-        #catagory-links{
-            height:96px;
+
+        #catagory-links {
+            height: 96px;
         }
-      .nav-item .nav-link{
-          color:white;
-          font-size: 1.3em;
-      }
-        #q-image{
-           float: left;
-           position: absolute;
-           left: 60px;
-           top: 0px;
-           z-index: 1000;
-           padding: 5px;
+
+        .nav-item .nav-link {
+            color: white;
+            font-size: 1.3em;
         }
-        #brand-col{
+
+        #q-image {
+            float: left;
+            position: absolute;
+            left: 60px;
+            top: 0px;
+            z-index: 1000;
+            padding: 5px;
+        }
+
+        #brand-col {
             padding-bottom: 40px;
             border-top-width: 30px;
             bottom: 31px;
         }
-        #color-ribbon{
+
+        #color-ribbon {
             /*margin-top: 40px;*/
-            background-color:  #00ff00;
-            height:85px;
+            background-color: #00ff00;
+            height: 85px;
         }
-        #brand-name{
+
+        #brand-name {
             /*height: 60px;*/
             /*padding-left: 3em;*/
-            font-size:5em;
+            font-size: 5em;
         }
-        header{
+
+        header {
             margin-bottom: 1.5em;
         }
     </style>
-
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
