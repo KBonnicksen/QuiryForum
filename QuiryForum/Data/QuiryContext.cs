@@ -126,16 +126,16 @@ namespace QuiryForum.Data
         private static void SeedCategories(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasData(
-                            new { CategoryID = 1, CategoryName = "Travel" },
-                            new { CategoryID = 2, CategoryName = "Sports" },
-                            new { CategoryID = 3, CategoryName = "Health" },
-                            new { CategoryID = 4, CategoryName = "Pets" },
-                            new { CategoryID = 5, CategoryName = "Entertainment" },
-                            new { CategoryID = 6, CategoryName = "Food" },
-                            new { CategoryID = 7, CategoryName = "Environment" },
-                            new { CategoryID = 8, CategoryName = "Electronics" },
-                            new { CategoryID = 9, CategoryName = "Family & Relationships" },
-                            new { CategoryID = 10, CategoryName = "Business" }
+                            new { CategoryID = 1, CategoryName = "Travel" , Icon = "fas fa-globe-americas" },
+                            new { CategoryID = 2, CategoryName = "Sports", Icon = "fas fa-volleyball-ball" },
+                            new { CategoryID = 3, CategoryName = "Health", Icon = "fas fa-briefcase-medical" },
+                            new { CategoryID = 4, CategoryName = "Pets", Icon = "fas fa-paw" },
+                            new { CategoryID = 5, CategoryName = "Entertainment", Icon = "fas fa-star" },
+                            new { CategoryID = 6, CategoryName = "Food", Icon = "fas fa-utensils" },
+                            new { CategoryID = 7, CategoryName = "Environment", Icon = "fas fa-leaf" },
+                            new { CategoryID = 8, CategoryName = "Electronics", Icon = "fas fa-robot" },
+                            new { CategoryID = 9, CategoryName = "Family & Relationships", Icon = "fas fa-heart" },
+                            new { CategoryID = 10, CategoryName = "Business", Icon = "fas fa-user-tie" }
                             );
         }
 
