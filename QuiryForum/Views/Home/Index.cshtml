@@ -14,13 +14,12 @@
     <div class="col-8" id="main-content">
         <h1>@ViewData["CategoryTitle"]</h1>
         <hr />
-        <div class="row" style="height:800px">
+        <div class="row">
             @foreach (Question q in Model.questions)
             {
                 Category c = Model.categories.Find(x => x.CategoryID == q.CategoryID);
                 <div class="card w-100 mb-2">
-                    <div class="card-body p-0">
-                        <div class="container-fluid">
+                        <div class="container-fluid h-100">
                             <div class="row h-100">
                                 <div id="num-likes-col" class="col-1 m-0">
                                     <div class="row align-items-center h-50">
@@ -45,6 +44,7 @@
                                             <p id="post-date" class="float-right text-muted">@q.FormattedDate()</p>
                                         </div>
                                     </div>
+
                                     <div id="question-title" class="row ml-2 mr-2">
                                         <h5 class="card-title">@Html.DisplayFor(m => q.Title)</h5>
                                     </div>
@@ -59,7 +59,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
             }
         </div>
     </div>
@@ -97,5 +96,8 @@
     }
     #post-date-col, #username-col{
         font-size: .85em;
+    }
+    #post-date, #num-comments{
+        font-size: .8em;
     }
 </style>
